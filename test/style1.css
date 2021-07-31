@@ -6,30 +6,13 @@ h1{
     color: #FEE600;
     margin-top: 10vh !important;
 }
-
-.container1{
+.container{
     width: 30% !important;
     margin: 10vh;
     border: 1px solid black;
-    height: 300px !important;
     background-color: #FEE600;
-}
-
-#or{
-    margin-top: 4%;
     
 }
-
-form{
-    margin-top: 4rem;
-}
-
- #submit1{
-   
-    width: 100px;
-}
-
-#submit2{
-    width: 100px;
-    
+#submit{
+    margin-left: 8rem !important;
 }
