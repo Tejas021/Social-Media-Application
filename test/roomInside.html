@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/yourcode.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./room.css" />
+    <title>Document</title>
+  </head>
+  <body class="bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand ms-3" href="#">Navbar</a>
+        <form class="d-flex ms-4">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+        </form>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto me-4 mb-lg-0">
+            <li class="nav-item px-2">
+              <a href="#" class="fa fa-home"></a>
+              <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 p-2">
+          <div class="bg-warning my-5 px-5 py-3">
+            <h3>Room name</h3>
+          </div>
+          <div class="px-5 m-5 btn btn-danger">Leave Room</div>
+        </div>
+        <div class="col-md-6 p-2">
+          <div class="my-5 bg-warning p-1">
+            <div class="card">
+              <div class="card-body height3">
+                <ul class="chat-list">
+                  <li class="in">
+                    <div class="chat-img">
+                      <img alt="Avtar" src="images.png" />
+                    </div>
+                    <div class="chat-body">
+                      <div class="chat-message">
+                        <h5>Super Cool Name</h5>
+                        <p>whats up mate</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="out">
+                    <div class="chat-img">
+                      <img alt="Avtar" src="images.png" />
+                    </div>
+                    <div class="chat-body">
+                      <div class="chat-message">
+                        <h5>Tejas Kolwankar</h5>
+                        <p>Hey Man !</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="in">
+                    <div class="chat-img">
+                      <img alt="Avtar" src="images.png" />
+                    </div>
+                    <div class="chat-body">
+                      <div class="chat-message">
+                        <h5 class="name">Super Cool Name</h5>
+                        <p>akshay is madarchod</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="out">
+                    <div class="chat-img">
+                      <img alt="Avtar" src="images.png" />
+                    </div>
+                    <div class="chat-body">
+                      <div class="chat-message">
+                        <h5>Tejas Kolwankar</h5>
+                        <p>I Know Right</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="in">
+                    <div class="chat-img">
+                      <img alt="Avtar" src="images.png" />
+                    </div>
+                    <div class="chat-body">
+                      <div class="chat-message">
+                        <h5>Super Cool Name</h5>
+                        <p>LMAO!!</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="out">
+                    <div class="chat-img">
+                      <img alt="Avtar" src="images.png" />
+                    </div>
+                    <div class="chat-body">
+                      <div class="chat-message">
+                        <h5>Tejas Kolwankar</h5>
+                        <p>Sawaal</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="row">
+                  <div class="col-md-10 col-xs-10">
+                    <input class="form-control" placeholder="your message" />
+                  </div>
+
+                  <button class="btn btn-dark col-md-2 col-xs-1">send</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 p-2">
+          <div class="my-5 p-3 bg-warning">
+            <h3>Room Participants</h3>
+            <div class="bg-dark text-center text-light p-1 m-1">
+              <h5>Tejas</h5>
+            </div>
+            <div class="bg-dark text-center text-light p-1 m-1">
+              <h5>Tejas</h5>
+            </div>
+            <div class="bg-dark text-center text-light p-1 m-1">
+              <h5>Tejas</h5>
+            </div>
+            <div class="bg-dark text-center text-light p-1 m-1">
+              <h5>Tejas</h5>
+            </div>
+            <div class="bg-dark text-center text-light p-1 m-1">
+              <h5>Tejas</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
