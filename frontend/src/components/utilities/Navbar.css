@@ -1,0 +1,15 @@
+.bg-trans {
+  background-color: #121212ef !important;
+}
+
+.fa {
+  font-size: 30px;
+  color: #ffc107;
+}
+.bg-dark {
+  background-color: #272727 !important;
+}
+
+.left-border {
+  border-left: #fee600 solid 15px;
+}
