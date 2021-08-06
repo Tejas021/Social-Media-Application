@@ -4,10 +4,9 @@ import "./Navbar.css"
 const Navbar = () => {
     return (
         <div>
-             <nav className="navbar navbar-expand-lg navbar-dark bg-trans fixed-top">
+             <nav className="navbar navbar-expand-lg navbar-dark bg-trans fixed-top" >
       <div className="container">
-        <a className="navbar-brand" href="/"
-          ><h3>
+        <a className="navbar-brand" href="/"><h3>
             <span className="text-warning">Yata</span
             ><span className="text-light">gram</span>
           </h3></a
