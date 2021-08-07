@@ -1,37 +1,29 @@
-body{
-    background-color: #272727 !important;
-}
-.container{
-    
-    
-    width: 40vw !important;
-    margin-top: 7rem;
+.homecontainer {
+  width: 40vw !important;
+  margin-top: 7rem;
 }
 
-.postbox{
-    background-color: #272727;
-    text-align: center;
-    border: 2px solid #fee600;
-    border-radius: 10px;
+.postbox {
+  background-color: #272727;
+  text-align: center;
+  border: 2px solid #fee600;
+  border-radius: 10px;
 }
 
-img{
-    
-    width: 100%;
-    
+.postimage {
+  width: 100%;
 }
 
-.like{
-    width: 25%;
+.like {
+  width: 25%;
 }
 
-.like i{
-    font-size: 1.5rem;
-    color: #fee600;
+.like i {
+  font-size: 1.5rem;
+  color: #fee600;
 }
 
-.uname{
-    width: 25%;
-    color: #fee600;
-    
+.uname {
+  width: 25%;
+  color: #fee600;
 }

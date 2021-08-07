@@ -1,50 +1,12 @@
 import React from 'react'
-
+import "./about.css"
+import Navbar from "../utilities/Navbar"
 const About = () => {
     return (
         <div>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand ms-3" href="/">Navbar</a>
-        <form class="d-flex ms-4">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-        </form>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto me-4 mb-lg-0">
-            <li class="nav-item px-2">
-              <a href="/" class="fa fa-home"></a>
-            
-            </li>
-            <li class="nav-item px-2">
-              <a class="nav-link" href="/">Link</a>
-            </li>
-            <li class="nav-item px-2">
-              <a class="nav-link" href="/">Link</a>
-            </li>
-            <li class="nav-item px-2">
-              <a class="nav-link" href="/">Link</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="container-fluid bg-warning p-5" style={{"backgroundImage": "url(./back.jpg)"}}>
+          <Navbar/>
+          
+    <div class="container-fluid bg-warning  " style={{"backgroundImage": "url(./back.jpg)","padding":"7%"}}>
         
       <div class="container">
         <div class="row">
