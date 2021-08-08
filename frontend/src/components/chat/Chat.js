@@ -5,7 +5,7 @@ const Chat = () => {
     return (
         <div>
             <Navbar/>
-            chat
+            chat route
         </div>
     )
 }
