@@ -8,6 +8,7 @@ import Login from "./components/login/Login"
 import SignUp from "./components/signup/SignUp"
 import Profile from './components/Profile/Profile';
 import Chat from './components/chat/Chat';
+import Room from './components/Room/Room';
 function App() {
   return (
 
@@ -20,6 +21,7 @@ function App() {
     <Route path="/signin" component={Login}></Route>
     <Route path="/signup" component={SignUp}></Route>
     <Route path="/chat" component={Chat}></Route>
+    <Route path="/room" component={Room}></Route>
     <Route path="/profile" component={Profile}></Route>
 
   </Switch>
