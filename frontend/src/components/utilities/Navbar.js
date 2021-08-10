@@ -40,7 +40,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
             
-              <Link className="nav-link active mx-3" to="/chat"><i className="fa fa-comments-o"></i></Link>
+              <Link className="nav-link active mx-3" to="/chat"><i className="far fa-comment "></i></Link>
           </li>
             <li className="nav-item">
                
@@ -49,7 +49,7 @@ const Navbar = () => {
 
             <li className="nav-item">
              
-                <Link className="nav-link active mx-3" to="/profile"><i className="fa fa-user-circle-o"></i></Link>
+                <Link className="nav-link active mx-3" to="/profile"><i className="far fa-user-circle"></i></Link>
             </li>
            
            
