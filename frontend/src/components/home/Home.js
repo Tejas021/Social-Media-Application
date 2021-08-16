@@ -3,6 +3,7 @@ import Navbar from '../utilities/Navbar'
 import "./Home.css"
 import Post from './Post'
 import {useEffect,useState} from "react"
+import AddPost from './AddPost'
 const Home = () => {
     useEffect(() => {
        const fetcher=async()=>{
@@ -32,6 +33,7 @@ const fetchPosts=async()=>{
             <Navbar/>
                 
             <div className="container homecontainer">
+                <AddPost posts={posts} setPosts={setPosts}/>
             {posts.map(post=><Post key={post._id} Name={post.content}/>)}
            
             
