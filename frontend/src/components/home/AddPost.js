@@ -24,7 +24,7 @@ fetch("http://localhost:5000/add-post",{
             <input className="form-control" type="text" placeholder="caption" value={newpost.caption} onChange={e=>setnewpost({...newpost,caption:e.target.value})}/>
             <input className="form-control" placeholder="user" value={newpost.user} onChange={e=>setnewpost({...newpost,user:e.target.value})}/>
             <input className="form-control" placeholder="likes" value={newpost.likes} onChange={e=>setnewpost({...newpost,likes:e.target.value})}/>
-            <button>add</button></form>
+            <button className="btn btn-warning">add</button></form>
 
            
         </div>

@@ -34,7 +34,9 @@ const fetchPosts=async()=>{
                 
             <div className="container homecontainer">
                 <AddPost posts={posts} setPosts={setPosts}/>
-            {posts.map(post=><Post key={post._id} Name={post.content}/>)}
+
+        {posts.reverse()}
+            {posts.map(post=><Post key={post._id} Name={post.user}/>)}
            
             
        </div>
