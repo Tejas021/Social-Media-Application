@@ -27,6 +27,8 @@ const Home = () => {
 
 
 
+
+
 const fetchPosts=async()=>{
     const fetchposts=await fetch("http://localhost:5000/get-post",{
         method:"GET",
@@ -46,6 +48,8 @@ const fetchPosts=async()=>{
 
             
            {ps.map(post=><Post key={post._id} Name={post.user}/>)}
+       
+            {posts.map(post=><Post key={post._id} Name={post.user}/>)}
            
             
        </div>
@@ -54,3 +58,6 @@ const fetchPosts=async()=>{
 }
 
 export default Home
+
+
+
