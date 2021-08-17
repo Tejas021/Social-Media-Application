@@ -2,7 +2,8 @@
   background-color: #121212ef !important;
 }
 
-.fa, .far {
+.fa,
+.far {
   font-size: 30px;
   color: #ffc107;
 }

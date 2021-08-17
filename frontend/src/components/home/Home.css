@@ -1,6 +1,6 @@
 .homecontainer {
-  width: 40vw !important;
-  margin-top: 7rem;
+  width: 40vw;
+  margin-top: 5rem;
 }
 
 .postbox {
@@ -26,4 +26,11 @@
 .uname {
   width: 25%;
   color: #fee600;
+}
+
+@media screen and (max-width: 480px) {
+  .homecontainer {
+    width: 95%;
+    margin-top: 5rem;
+  }
 }
