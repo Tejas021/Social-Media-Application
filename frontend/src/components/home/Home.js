@@ -3,6 +3,8 @@ import Navbar from '../utilities/Navbar'
 import "./Home.css"
 import Post from './Post'
 const Home = () => {
+
+    
     return (
         <div>
             <Navbar/>

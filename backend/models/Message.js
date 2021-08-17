@@ -25,6 +25,5 @@ const messageSchema=new Schema({
 const Message = mongoose.model('message',messageSchema)
 module.exports=Message;
 
-const mongoose = require("mongoose");
-const Schema=mongoose.Schema
+
 
