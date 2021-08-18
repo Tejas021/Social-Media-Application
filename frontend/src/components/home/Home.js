@@ -21,13 +21,6 @@ const Home = () => {
     
     [posts])
 
-    
-      
-
-    
-
-
-
 
 
 
@@ -49,7 +42,7 @@ const fetchPosts=async()=>{
                 <AddPost posts={posts} setPosts={setPosts}/>
 
             
-           {posts.map(post=><Post key={post._id} Name={post.user} Caption={post.caption}  />)}
+           {posts.map(post=><Post key={post._id} Name={post.user} Caption={post.caption} likes={post.like} />)}
        
 
             

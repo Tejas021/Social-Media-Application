@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Home.css"
-const Post = ({Name,Caption}) => {
+const Post = ({Name,Caption,likes}) => {
 
     
     return (
@@ -9,7 +9,7 @@ const Post = ({Name,Caption}) => {
         <img className="my-2 postimage" src="https://source.unsplash.com/1080x1080/?nature,scenery" alt=""/>
         <div class="caption m-1">{Caption}</div>
                 <div class="row like mt-3">
-                   <div class="col-lg-5"><i class="far fa-thumbs-up"></i><span><p>33</p></span></div> 
+                   <div class="col-lg-5"><i class="far fa-thumbs-up"></i><span><p>{likes}</p></span></div> 
                    
                     <div class="col-lg-3"><i class="far fa-comment  "></i></div>
                 </div>
