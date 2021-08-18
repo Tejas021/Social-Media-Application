@@ -14,11 +14,16 @@
   width: 100%;
 }
 
-.like {
-  width: 25%;
+.caption{
+  color: white;
+  text-align: left;
 }
 
-.like i {
+.like {
+  width: 50%;
+}
+
+.like div {
   font-size: 1.5rem;
   color: #fee600;
 }

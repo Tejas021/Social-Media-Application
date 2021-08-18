@@ -8,21 +8,23 @@ const Home = () => {
 
 
     const [posts, setPosts] = useState([])
-    const [ps, setPs] = useState([])
     
     useEffect(() => {
        const fetcher=async()=>{
            const l= await fetchPosts();
-           setPosts(l)
+           setPosts(l.reverse())
            console.log(posts)
-           setPs (l.reverse())
-           console.log(ps)
+          
        }
     fetcher();    
     }, 
     
     [posts])
 
+    
+      
+
+    
 
 
 
@@ -47,9 +49,10 @@ const fetchPosts=async()=>{
                 <AddPost posts={posts} setPosts={setPosts}/>
 
             
-           {ps.map(post=><Post key={post._id} Name={post.user}/>)}
+           {posts.map(post=><Post key={post._id} Name={post.user} Caption={post.caption}  />)}
        
-            {posts.map(post=><Post key={post._id} Name={post.user}/>)}
+
+            
            
             
        </div>
