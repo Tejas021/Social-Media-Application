@@ -1,17 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import "./Navbar.css"
 
 const Navbar = () => {
     return (
         <div>
-             <nav className="navbar navbar-expand-lg navbar-dark bg-trans fixed-top">
+             <nav className="navbar navbar-expand-lg navbar-dark bg-trans fixed-top" >
       <div className="container">
-        <a className="navbar-brand" href="/"
-          ><h3>
+        <Link className="navbar-brand" to="/"><h3>
             <span className="text-warning">Yata</span
             ><span className="text-light">gram</span>
-          </h3></a
-        >
+          </h3></Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -35,17 +34,21 @@ const Navbar = () => {
           </form>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active mx-3" aria-current="page" href="/"><i className=" fa fa-fw fa-home"></i></a>
+      
+              <Link className="nav-link active mx-3" to="/"><i className=" fa fa-fw fa-home"></i></Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link active mx-3" aria-current="page" href="/"><i className="fa fa-comments-o"></i></a>
+            
+              <Link className="nav-link active mx-3" to="/chat"><i className="far fa-comment "></i></Link>
           </li>
             <li className="nav-item">
-                <a className="nav-link active mx-3" aria-current="page" href="/"><i className="fa fa-info-circle"></i></a>
+               
+                <Link className="nav-link active mx-3" to="/about"><i className="fa fa-info-circle"></i></Link>
             </li>
 
             <li className="nav-item">
-                <a className="nav-link active mx-3" aria-current="page" href="/"><i className="fa fa-user-circle-o"></i></a>
+             
+                <Link className="nav-link active mx-3" to="/profile"><i className="far fa-user-circle"></i></Link>
             </li>
            
            
@@ -59,5 +62,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
-
