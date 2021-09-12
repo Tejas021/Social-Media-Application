@@ -4,6 +4,7 @@ import "./Home.css"
 import Post from './Post'
 import {useEffect,useState} from "react"
 import AddPost from './AddPost'
+import ImageUpload from './ImageUpload'
 const Home = () => {
 
 
@@ -13,7 +14,7 @@ const Home = () => {
        const fetcher=async()=>{
            const l= await fetchPosts();
            setPosts(l.reverse())
-           console.log(posts)
+     
           
        }
     fetcher();    
@@ -37,11 +38,11 @@ const fetchPosts=async()=>{
     return (
         <div>
             <Navbar/>
-                
+      
             <div className="container homecontainer">
                 <AddPost posts={posts} setPosts={setPosts}/>
 
-            
+                <ImageUpload/>
            {posts.map(post=><Post key={post._id} Name={post.user} Caption={post.caption} likes={post.like} />)}
        
 

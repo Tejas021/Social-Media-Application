@@ -2,7 +2,7 @@ import React from 'react'
 import {useState} from "react"
 const AddPost = ({posts,setPosts}) => {
     
-const [newpost, setnewpost] = useState({content:"",caption:"",like:"",user:""})
+const [newpost, setnewpost] = useState({content:"",caption:"",like:"",user:"",imgUrl:""})
 
 
 const onPostSubmit =(e)=>{
@@ -13,6 +13,8 @@ fetch("http://localhost:5000/add-post",{
     headers:{"Content-Type":"application/json"},
     body:JSON.stringify(newpost)
 }).then(res=>res.json()).then(res=>setPosts([...posts,res]))
+
+setPosts({content:"",caption:"",like:"",user:"",imgUrl:""})
 }
 
     return (
