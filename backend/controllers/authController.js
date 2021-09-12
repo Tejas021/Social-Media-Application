@@ -36,6 +36,7 @@ const alertError = (err) => {
 module.exports.signin=async (req,res)=>{
 
 const {password,email }=req.body;
+console.log(req.body)
   try{
       const user=await User.login(email,password);
   console.log(user)
@@ -64,7 +65,10 @@ module.exports.signup=async (req,res)=>{
 
 try{
     const {name,password,email }=req.body;
+    console.log(req.body)
+    console.log(name,password,email)
 const newUser= await User.create({name,password,email})
+console.log(newUser)
 
 const token = createJWT(newUser._id)
 res.cookie("jwt",token,{maxAge:maxAge*1000})
@@ -75,7 +79,8 @@ res.status(201).send({user:newUser})
 catch(err){
    
     let errors=alertError(err)
-    res.status(400).send({errors})
+    console.log(errors)
+    res.status(400).json({errors})
 }
 
         
