@@ -114,7 +114,7 @@ catch(err){
             }
             else{
                 console.log("ji")
-                next();
+                
             }
 
 
