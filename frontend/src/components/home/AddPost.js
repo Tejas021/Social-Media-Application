@@ -2,6 +2,7 @@ import React from 'react'
 import {useState} from "react"
 const AddPost = ({posts,setPosts}) => {
     
+const [image, setimage] = useState("")
 const [newpost, setnewpost] = useState({content:"",caption:"",like:"",user:"",imgUrl:""})
 
 
@@ -26,6 +27,8 @@ setPosts({content:"",caption:"",like:"",user:"",imgUrl:""})
             <input className="form-control" type="text" placeholder="caption" value={newpost.caption} onChange={e=>setnewpost({...newpost,caption:e.target.value})}/>
             <input className="form-control" placeholder="user" value={newpost.user} onChange={e=>setnewpost({...newpost,user:e.target.value})}/>
             <input className="form-control" placeholder="likes" value={newpost.like} onChange={e=>setnewpost({...newpost,like:e.target.value})}/>
+           <input type="file" onChange={(e=>setimage(e.target.files[0]))}/>
+            
             <button className="btn btn-warning">add</button></form>
 
            

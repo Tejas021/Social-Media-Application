@@ -38,6 +38,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const authRoutes= require("./routes/authRoutes.js")
 const postRoutes=require("./routes/postRoutes.js")
 
+
+
+//TESTING COOKIES
+app.get("/set-cookies",(req,res)=>{
+    res.cookie("name","TEjas")
+    res.send("hi")
+})
+app.get('/get-cookies', (req, res) => {
+    const cookies = req.cookies;
+    console.log(req.cookies)
+    
+    res.json(cookies);
+})
+
 //USING ROUTES
 
 app.use(authRoutes);

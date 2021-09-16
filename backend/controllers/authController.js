@@ -36,11 +36,12 @@ const alertError = (err) => {
 module.exports.signin=async (req,res)=>{
 
 const {password,email }=req.body;
-console.log(req.body)
+
   try{
       const user=await User.login(email,password);
-  console.log(user)
+
   const token=createJWT(user._id)
+
   res.cookie("jwt",token,{maxAge:maxAge*1000})
   res.status(201).send({user})
   }
@@ -54,7 +55,7 @@ console.log(req.body)
 }
 
 module.exports.logout=async (req,res)=>{
-
+console.log("logout")
     res.cookie('jwt', "", { maxAge: 1 })
     res.status(200).json({ logout: true })
     
@@ -65,10 +66,9 @@ module.exports.signup=async (req,res)=>{
 
 try{
     const {name,password,email }=req.body;
-    console.log(req.body)
-    console.log(name,password,email)
+
 const newUser= await User.create({name,password,email})
-console.log(newUser)
+
 
 const token = createJWT(newUser._id)
 res.cookie("jwt",token,{maxAge:maxAge*1000})
@@ -79,10 +79,43 @@ res.status(201).send({user:newUser})
 catch(err){
    
     let errors=alertError(err)
-    console.log(errors)
+    
     res.status(400).json({errors})
 }
 
         
         
+        }
+
+        module.exports.verifyUser=async (req,res,next)=>{
+
+            
+
+            if(req.headers.cookie){
+                let Cookie=req.headers.cookie.split("=")[1]
+            
+                const token = Cookie;
+                if (token) {
+                    jwt.verify(token, 'somekey', async (err, decodedToken) => {
+                     
+                        if (err) {
+                            console.log(err.message)
+                        } else {
+                            let user = await User.findById(decodedToken.id)
+                            res.json(user);
+                            next();
+            
+                        }
+                    })
+                } else {
+                    next();
+                }
+
+            }
+            else{
+                next()
+            }
+
+
+          
         }

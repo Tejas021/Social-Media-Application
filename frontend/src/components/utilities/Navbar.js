@@ -1,8 +1,12 @@
 import React from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import "./Navbar.css"
+import {UserContext} from "../../UserContext"
 
 const Navbar = () => {
+
+  const {user,setUser}=useContext(UserContext)
     return (
         <div>
              <nav className="navbar navbar-expand-lg navbar-dark bg-trans fixed-top" >
@@ -32,7 +36,7 @@ const Navbar = () => {
             />
           
           </form>
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+{user?<ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
       
               <Link className="nav-link active mx-3" to="/"><i className=" fa fa-fw fa-home"></i></Link>
@@ -50,9 +54,14 @@ const Navbar = () => {
              
                 <Link className="nav-link active mx-3" to="/profile"><i className="far fa-user-circle"></i></Link>
             </li>
+            
+            <li className="nav-item">
+             
+             <Link className="nav-link active mx-3" onClick={()=>{fetch("http://localhost:5000/logout",{method:"GET",credentials:"include"});setUser(null)}}><i className="fa fa-power-off" to="/"></i></Link>
+         </li>
            
-           
-          </ul>
+          </ul>:<></>}
+          
         </div>
       </div>
     </nav>

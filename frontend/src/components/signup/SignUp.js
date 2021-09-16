@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState,useContext } from 'react'
 import Navbar from '../utilities/Navbar'
-import { Redirect } from 'react-router'
+import { Redirect,Link } from 'react-router-dom'
 import {UserContext} from "../../UserContext"
 import "./SignUp.css"
 
@@ -29,7 +29,7 @@ const submitHandler= async (e)=>{
 try{
   const res = await fetch('http://localhost:5000/signup', {
                 method: 'POST',
-                // credentials: 'include',
+                credentials: 'include',
                 body: JSON.stringify({name:details.name,email:details.email,password:details.password}),
                 headers: { 'Content-Type': 'application/json' }
             });
