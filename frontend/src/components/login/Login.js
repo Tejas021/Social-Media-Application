@@ -80,7 +80,7 @@ try{
           }}
         />
       </div>
-      <div classNameName="text-danger" type="password">{errors.emailError}</div>
+      <div className="text-danger" type="password">{errors.emailError}</div>
       <div className="form-group my-2">
         <input
           type="password"
@@ -96,7 +96,7 @@ try{
           }}
         />
       </div>
-      <div classNameName="text-danger" type="password">{errors.passwordError}</div>
+      <div className="text-danger" type="password">{errors.passwordError}</div>
       <div className="row">
       <div className="form-group col-lg-5 text-center my-3 ">
         <button className="loginsubmit btn btn-dark" type="submit">Login</button>

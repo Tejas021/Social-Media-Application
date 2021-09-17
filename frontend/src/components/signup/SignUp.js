@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState,useContext } from 'react'
 import Navbar from '../utilities/Navbar'
-import { Redirect,Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import {UserContext} from "../../UserContext"
 import "./SignUp.css"
 
@@ -147,6 +147,7 @@ try{
       </div>
       <div className="form-group my-3">
         <button type='submit' className="btn btn-dark signupsubmit" >Signup</button>
+        <button type='submit' className="btn btn-dark signupsubmit" >SignIn</button>
       </div> 
        
     </form>

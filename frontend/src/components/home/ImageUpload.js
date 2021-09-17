@@ -4,6 +4,9 @@ const ImageUpload = () => {
     const [fileData, setfileData] = useState("")
     const [image, setImage] = useState("")
     
+
+
+
 const handleImage=({target})=>{
 setfileData(target.files[0])
 setImage(target.value)

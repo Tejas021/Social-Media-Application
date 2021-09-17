@@ -2,8 +2,8 @@ const Post = require("../models/Post")
 
 module.exports.addPost=async(req,res)=>{
     console.log(req.body)
-    const {content,caption,like,user,comments}=req.body
-    const np=new Post({content:content,like:like,caption:caption,user:user,comments:comments})
+    const {content,caption,like,user,comments,imgUrl}=req.body
+    const np=new Post({content:content,like:like,caption:caption,user:user,comments:comments,imgUrl:imgUrl})
     await np.save().then((newpost)=>res.status(201).send(newpost));
    
 

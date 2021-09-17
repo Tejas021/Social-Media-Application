@@ -6,6 +6,22 @@ const [image, setimage] = useState("")
 const [newpost, setnewpost] = useState({content:"",caption:"",like:"",user:"",imgUrl:""})
 
 
+
+const imageUpload=(e)=>{
+    e.preventDefault()
+    let data = new FormData();
+    data.append("file",image);
+    data.append("api_key",495674683468576)
+    data.append("upload_preset","yatagram-images");
+    data.append("cloud_name","yatagram")
+    console.log(data.file)
+    fetch("	https://api.cloudinary.com/v1_1/yatagram/upload",{
+        method:"post",
+        body:data
+    }).then(res=>res.json()).then(pure=>setnewpost({...newpost,imgUrl:pure.url}))
+}
+
+
 const onPostSubmit =(e)=>{
 e.preventDefault();
 
@@ -15,7 +31,7 @@ fetch("http://localhost:5000/add-post",{
     body:JSON.stringify(newpost)
 }).then(res=>res.json()).then(res=>setPosts([...posts,res]))
 
-setPosts({content:"",caption:"",like:"",user:"",imgUrl:""})
+setnewpost({content:"",caption:"",like:"",user:"",imgUrl:""})
 }
 
     return (
@@ -28,7 +44,7 @@ setPosts({content:"",caption:"",like:"",user:"",imgUrl:""})
             <input className="form-control" placeholder="user" value={newpost.user} onChange={e=>setnewpost({...newpost,user:e.target.value})}/>
             <input className="form-control" placeholder="likes" value={newpost.like} onChange={e=>setnewpost({...newpost,like:e.target.value})}/>
            <input type="file" onChange={(e=>setimage(e.target.files[0]))}/>
-            
+            <button onClick={e=>imageUpload(e)}>ok</button>
             <button className="btn btn-warning">add</button></form>
 
            

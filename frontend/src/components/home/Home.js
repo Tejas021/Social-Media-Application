@@ -4,7 +4,7 @@ import "./Home.css"
 import Post from './Post'
 import {useEffect,useState,useContext} from "react"
 import AddPost from './AddPost'
-import ImageUpload from './ImageUpload'
+
 import {UserContext} from "../../UserContext"
 import {Redirect} from "react-router-dom"
 const Home = () => {
@@ -44,9 +44,8 @@ if(!user){
       
             <div className="container homecontainer">
                 <AddPost posts={posts} setPosts={setPosts}/>
-                    <>{JSON.stringify(user)}</>
-                {/* <ImageUpload/> */}
-           {posts.map(post=><Post key={post._id} Name={post.user} Caption={post.caption} likes={post.like} />)}
+                    
+           {posts.map(post=><Post key={post._id} Name={post.user} Caption={post.caption} likes={post.like} img={post.imgUrl}/>)}
        
 
             

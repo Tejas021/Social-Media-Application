@@ -7,7 +7,8 @@ const postSchema=new Schema({
     user:{type:String,required:true},
     caption:{type:String},
     like:{type:Number},
-    comments:{type:Array}
+    comments:{type:Array},
+    imgUrl:{type:String}
 
 
 },{timestamps:true})
