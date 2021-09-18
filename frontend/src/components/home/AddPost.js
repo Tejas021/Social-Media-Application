@@ -7,8 +7,8 @@ const [newpost, setnewpost] = useState({content:"",caption:"",like:"",user:"",im
 
 
 
-const imageUpload=(e)=>{
-    e.preventDefault()
+const imageUpload=()=>{
+   
     let data = new FormData();
     data.append("file",image);
     data.append("api_key",495674683468576)
@@ -25,6 +25,7 @@ const imageUpload=(e)=>{
 const onPostSubmit =(e)=>{
 e.preventDefault();
 
+imageUpload()
 fetch("http://localhost:5000/add-post",{
     method:"POST",
     headers:{"Content-Type":"application/json"},
@@ -43,8 +44,8 @@ setnewpost({content:"",caption:"",like:"",user:"",imgUrl:""})
             <input className="form-control" type="text" placeholder="caption" value={newpost.caption} onChange={e=>setnewpost({...newpost,caption:e.target.value})}/>
             <input className="form-control" placeholder="user" value={newpost.user} onChange={e=>setnewpost({...newpost,user:e.target.value})}/>
             <input className="form-control" placeholder="likes" value={newpost.like} onChange={e=>setnewpost({...newpost,like:e.target.value})}/>
-           <input type="file" onChange={(e=>setimage(e.target.files[0]))}/>
-            <button onClick={e=>imageUpload(e)}>ok</button>
+           <input type="file" onChange={(e=>setimage(e.target.files[0]))} className="form-control"/>
+            {/* <button onClick={e=>imageUpload(e)}>ok</button> */}
             <button className="btn btn-warning">add</button></form>
 
            
