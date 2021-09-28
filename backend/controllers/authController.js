@@ -89,13 +89,13 @@ catch(err){
 
         module.exports.verifyUser=async (req,res,next)=>{
 
-            
+            const token = req.body.cookie.jwt;
 
-            if(req.headers.cookie){
-                let Cookie=req.headers.cookie.split("=")[1]
-            
-                const token = Cookie;
+           
+                
+              
                 if (token) {
+                
                     jwt.verify(token, 'somekey', async (err, decodedToken) => {
                      
                         if (err) {
@@ -111,12 +111,30 @@ catch(err){
                     next();
                 }
 
-            }
-            else{
-                console.log("ji")
-                next();
-            }
+           
+              
+          
 
 
           
         }
+
+
+        module.exports.updateUser=async(req,res)=>{
+          
+            const user1 =await User.findByIdAndUpdate(req.body.user_id,{
+                bio:req.body.bio,
+                city:req.body.city,
+                department:req.body.department,
+                name:req.body.name
+            }, {new: true, useFindAndModify: false},(err,docs)=>{
+                if (err){
+                    console.log(err)
+                }
+               
+
+            })
+            
+            return res.status(200).send(user1)
+        }
+        

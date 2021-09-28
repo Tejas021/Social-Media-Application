@@ -14,7 +14,7 @@
   width: 100%;
 }
 
-.caption{
+.caption {
   color: white;
   text-align: left;
 }
@@ -32,10 +32,10 @@
   width: 100%;
   color: #fee600;
   text-align: left;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
-@media (min-width:480px) and (max-width: 1025px) {
+@media (min-width: 480px) and (max-width: 1025px) {
   .homecontainer {
     width: 95%;
     margin-top: 5rem;

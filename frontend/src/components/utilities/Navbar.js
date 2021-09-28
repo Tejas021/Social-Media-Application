@@ -6,7 +6,7 @@ import {UserContext} from "../../UserContext"
 
 const Navbar = () => {
 
-  const {user,setUser}=useContext(UserContext)
+  const {user}=useContext(UserContext)
     return (
         <div>
              <nav className="navbar navbar-expand-lg navbar-dark bg-trans fixed-top" >
@@ -52,13 +52,11 @@ const Navbar = () => {
 
             <li className="nav-item">
              
-                <Link className="nav-link active mx-3" to="/profile"><i className="far fa-user-circle"></i></Link>
+                <Link className="nav-link active mx-3" to={`/profile/${user._id}`}><i className="far fa-user-circle"></i></Link>
             </li>
             
-            <li className="nav-item">
-             
-             <Link className="nav-link active mx-3" onClick={()=>{fetch("http://localhost:5000/logout",{method:"GET",credentials:"include"});setUser(null)}}><i className="fa fa-power-off" to="/"></i></Link>
-         </li>
+           
+         <li className="nav-item text-warning mt-2"><h5>{user.name}</h5></li>
            
           </ul>:<></>}
           

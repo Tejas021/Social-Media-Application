@@ -6,25 +6,28 @@ import {useEffect,useState,useContext} from "react"
 import AddPost from './AddPost'
 
 import {UserContext} from "../../UserContext"
-import {Redirect} from "react-router-dom"
+
 const Home = () => {
 
     // eslint-disable-next-line
 const {user,setUser} = useContext(UserContext)
+
+const [dis,setDis]=useState(false)
 
     const [posts, setPosts] = useState([])
     
     useEffect(() => {
        const fetcher=async()=>{
            const l= await fetchPosts();
-           setPosts(l.reverse())
+           if(l){setPosts(l.reverse())}
+           
      
           
        }
     fetcher();    
     }, 
     
-    [posts])
+    [])
 
 
 
@@ -38,16 +41,23 @@ const fetchPosts=async()=>{
     return fetchposts;
 }
 
-// if(!user){
-//    return <Redirect to="/signin"/>}
+
+
+
     return (
         <div>
             <Navbar/>
-      
+            <button onClick={()=>setDis(!dis)} className="btn btn-warning mt-2">+</button>
             <div className="container homecontainer">
-                <AddPost posts={posts} setPosts={setPosts}/>
+              
+                {dis?<AddPost posts={posts} setPosts={setPosts} user={user}/>:<></>}
+                
                     
-           {posts.map(post=><Post key={post._id} Name={post.user} Caption={post.caption} likes={post.like} img={post.imgUrl}/>)}
+           {
+           posts.length>0?
+           
+           posts.map(post=><Post key={post._id} post_id={post._id} Name={post.user} Caption={post.caption} likes={post.like} img={post.imgUrl}/>):<h3 className="text-warning">loading posts...</h3>
+           }
        
 
             

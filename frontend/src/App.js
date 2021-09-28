@@ -50,13 +50,15 @@ function App() {
 <UserContext.Provider value={{user,setUser}}>
 
 <Switch>
-<Route exact path="/" >{user?<Home/>:<Login/>}</Route>
+
+    <Route exact path="/" >{user?<Home/>:<Login/>}</Route>
     <Route path="/about" >{user?<About/>:<Login/>}</Route>
     <Route path="/signin" >{user?<Redirect to="/"/>:<Login/>}</Route>
     <Route path="/signup" >{user?<Redirect to="/"/>:<SignUp/>}</Route>
-    <Route path="/chat" >{user?<Chat/>:<Login/>}</Route>
-    <Route path="/room" >{user?<Room/>:<Login />}</Route>
-    <Route path="/profile/:id" ><Profile/></Route>
+    <Route path="/chat">{user?<Chat/>:<Redirect to="/"/>}</Route>
+    <Route path="/room" >{user?<Room/>:<Login/>}</Route>
+    <Route path="/profile/:id" >{user?<Profile/>:<Login/>}</Route>
+
 
   </Switch>
 </UserContext.Provider>

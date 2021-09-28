@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState,useContext } from 'react'
 import Navbar from '../utilities/Navbar'
-import { Redirect } from 'react-router-dom'
+
 import {UserContext} from "../../UserContext"
 import "./SignUp.css"
 
@@ -52,9 +52,7 @@ try{
       }
 }
 
- if (user) {
-        return <Redirect to="/"/>
-    }
+
     return (
         <div>
     <Navbar/>        
@@ -153,7 +151,7 @@ try{
     </form>
               
    </div>
-    
+    {user}
         </div>
     )
 }
