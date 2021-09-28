@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../utilities/Navbar'
+import {Link} from "react-router-dom"
 
 const Chat = () => {
     return (
@@ -72,6 +73,10 @@ const Chat = () => {
 
 
     </div>
+
+        <div>
+           <Link to='/room'> <button >click</button>  </Link>
+        </div>
         </div>
     )
 }

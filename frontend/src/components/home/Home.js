@@ -9,7 +9,9 @@ import {UserContext} from "../../UserContext"
 import {Redirect} from "react-router-dom"
 const Home = () => {
 
+    // eslint-disable-next-line
 const {user,setUser} = useContext(UserContext)
+
     const [posts, setPosts] = useState([])
     
     useEffect(() => {
@@ -36,8 +38,8 @@ const fetchPosts=async()=>{
     return fetchposts;
 }
 
-if(!user){
-   return <Redirect to="/signin"/>}
+// if(!user){
+//    return <Redirect to="/signin"/>}
     return (
         <div>
             <Navbar/>
