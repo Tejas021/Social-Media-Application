@@ -8,7 +8,7 @@ import {UserContext} from "../../UserContext"
 const Login = () => {
 
   const {user,setUser}=useContext(UserContext)
-const [details,setDetails]=useState({
+  const [details,setDetails]=useState({
   email:'',
   password:'',
 

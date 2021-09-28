@@ -1,85 +1,120 @@
 import React from 'react'
+import Message from './Message'
+import { useState, useEffect, useContext, useRef } from "react";
+import { UserContext } from "../../UserContext";
+import {io} from 'socket.io-client'
 
-const ChatBox = () => {
+
+
+const ChatBox = ({currentChat}) => {
+    const { user } = useContext(UserContext);
+    const [messages, setMessages] = useState([]);
+    const [newMessage, setNewMessage] = useState('');
+    const socket = useRef();
+    const [arrivalMessage, setArrivalMessage] = useState(null);
+    const scrollRef = useRef();
+    
+   
+  // console.log(socket)
+  // console.log(currentChat)
+
+  useEffect(()=>{
+    socket.current=io('ws://localhost:8900')
+    socket.current.on("getMessage",data=>{
+      setArrivalMessage({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: Date.now()
+      })
+    })
+  },[])
+
+
+
+   useEffect(()=>{
+    const getMessasges = async ()=>{
+      await fetch("http://localhost:5000/message/" + currentChat?._id)
+      .then(res=>res.json())
+      .then(res=>setMessages(res))
+      .catch((error)=>console.log(error))
+    }
+    getMessasges()
+  },[currentChat])
+
+  useEffect(()=>{
+    socket.current.emit("addUser",user._id);
+    socket.current.on("getUsers",users=>{console.log(users)})
+  },[user])
+
+  
+
+  useEffect(()=>{
+    arrivalMessage && currentChat?.members.includes(arrivalMessage.sender) &&
+    setMessages(prev=>[...prev,arrivalMessage])
+  },[arrivalMessage,currentChat])
+
+  const handleSubmit = async (e)=>{
+    e.preventDefault();
+    const msg = {
+      sender : user._id,
+      text : newMessage,
+      conversationId : currentChat._id
+    }
+    
+    socket.current.emit("sendMessage",{
+      senderId:user._id,
+      receiverId:currentChat.members.find(member=>member !== user._id),
+      text:newMessage
+    })
+
+    try{
+      fetch("http://localhost:5000/message", {
+    method: "POST",
+    body: JSON.stringify(msg),
+    headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+})
+.then(response => response.json())
+.then(json => setMessages([...messages,json]));
+setNewMessage('')
+    } catch(err){
+      console.log(err)
+    }
+    
+
+  }
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+    // console.log(messages)
+
     return (
         <div>
             <div className="card">
               <div className="card-body height3">
-                <ul className="chat-list">
-                  <li className="in">
-                    <div className="chat-img">
-                      <img alt="Avtar" src="images.png" />
-                    </div>
-                    <div className="chat-body">
-                      <div className="chat-message">
-                        <h5>Super Cool Name</h5>
-                        <p>whats up mate</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="out">
-                    <div className="chat-img">
-                      <img alt="Avtar" src="images.png" />
-                    </div>
-                    <div className="chat-body">
-                      <div className="chat-message">
-                        <h5>Tejas Kolwankar</h5>
-                        <p>Hey Man !</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="in">
-                    <div className="chat-img">
-                      <img alt="Avtar" src="images.png" />
-                    </div>
-                    <div className="chat-body">
-                      <div className="chat-message">
-                        <h5 className="name">Super Cool Name</h5>
-                        <p>akshay is awesome</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="out">
-                    <div className="chat-img">
-                      <img alt="Avtar" src="images.png" />
-                    </div>
-                    <div className="chat-body">
-                      <div className="chat-message">
-                        <h5>Tejas Kolwankar</h5>
-                        <p>I Know Right</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="in">
-                    <div className="chat-img">
-                      <img alt="Avtar" src="images.png" />
-                    </div>
-                    <div className="chat-body">
-                      <div className="chat-message">
-                        <h5>Super Cool Name</h5>
-                        <p>LMAO!!</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="out">
-                    <div className="chat-img">
-                      <img alt="Avtar" src="images.png" />
-                    </div>
-                    <div className="chat-body">
-                      <div className="chat-message">
-                        <h5>Tejas Kolwankar</h5>
-                        <p>Sawaal</p>
-                      </div>
-                    </div>
-                  </li>
+              {
+                  currentChat ? ( <>
+                <ul className="chat-list"> 
+                {
+                  messages.map(m=>{
+                    return <div key={m._id} ref={scrollRef}><Message  message={m} myMsg={m.sender === user._id} /> </div>
+                  })
+                }
+                
                 </ul>
+                  
                 <div className="row">
                   <div className="col-md-10 col-xs-10">
-                    <input className="form-control" placeholder="your message" />
+                    <input className="form-control" placeholder="your message"
+                     onChange={e=>setNewMessage(e.target.value)} 
+                     value={newMessage}  />
                   </div>
-
-                  <button className="btn btn-dark col-md-2 col-xs-1">send</button>
+                  <button className="btn btn-dark col-md-2 col-xs-1" onClick={handleSubmit}>send</button>
                 </div>
+                 </>  ) : ( <div style={{textAlign:"center"}}>start a chat</div>  )}
               </div>
             </div>
         </div>

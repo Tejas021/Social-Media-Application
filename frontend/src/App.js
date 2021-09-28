@@ -36,11 +36,11 @@ function App() {
 
     }
     verifyUser()
-
+    
 
   }, [])
 
-
+  // console.log (user)
 
 
   return (
@@ -50,6 +50,7 @@ function App() {
 <UserContext.Provider value={{user,setUser}}>
 
 <Switch>
+
     <Route exact path="/" >{user?<Home/>:<Login/>}</Route>
     <Route path="/about" >{user?<About/>:<Login/>}</Route>
     <Route path="/signin" >{user?<Redirect to="/"/>:<Login/>}</Route>
@@ -57,6 +58,7 @@ function App() {
     <Route path="/chat">{user?<Chat/>:<Redirect to="/"/>}</Route>
     <Route path="/room" >{user?<Room/>:<Login/>}</Route>
     <Route path="/profile/:id" >{user?<Profile/>:<Login/>}</Route>
+
 
   </Switch>
 </UserContext.Provider>

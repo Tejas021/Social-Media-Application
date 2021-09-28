@@ -9,8 +9,11 @@ import {UserContext} from "../../UserContext"
 
 const Home = () => {
 
+    // eslint-disable-next-line
 const {user,setUser} = useContext(UserContext)
+
 const [dis,setDis]=useState(false)
+
     const [posts, setPosts] = useState([])
     
     useEffect(() => {
@@ -37,6 +40,8 @@ const fetchPosts=async()=>{
 
     return fetchposts;
 }
+
+
 
 
     return (

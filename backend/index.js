@@ -37,6 +37,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //IMPORTING ROUTES
 const authRoutes= require("./routes/authRoutes.js")
 const postRoutes=require("./routes/postRoutes.js")
+const conversationRoutes=require("./routes/conversationRoutes")
+const messageRoutes=require("./routes/messageRoutes.js")
+const userRoutes=require("./routes/userRoutes.js")
 
 
 
@@ -56,6 +59,9 @@ app.get('/get-cookies', (req, res) => {
 
 app.use(authRoutes);
 app.use(postRoutes)
+app.use(conversationRoutes)
+app.use(messageRoutes)
+app.use(userRoutes)
 
 app.get("",(req,res)=>{
     res.send("home")
