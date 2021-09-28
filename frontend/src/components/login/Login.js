@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState,useContext } from 'react'
 import Navbar from '../utilities/Navbar'
-import { Redirect,Link } from 'react-router-dom'
+import {Link } from 'react-router-dom'
 import "./Login.css"
 import {UserContext} from "../../UserContext"
 
@@ -53,9 +53,7 @@ try{
       }
 }
 
- if (user) {
-        return <Redirect to="/"/>
-    }
+
 
     return (
         <div>
@@ -111,6 +109,7 @@ try{
     </form>
               
    </div>
+   {user}
         </div>
     )
 }
