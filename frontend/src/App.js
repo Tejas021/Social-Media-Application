@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter as Router,Switch,Route} from "react-router-dom"
+import {BrowserRouter as Router,Switch,Route,Redirect} from "react-router-dom"
 import {useState,useEffect} from 'react';
 import { UserContext } from './UserContext';
 import About from "./components/about/About"
@@ -50,13 +50,13 @@ function App() {
 <UserContext.Provider value={{user,setUser}}>
 
 <Switch>
-    <Route exact path="/" component={Home}></Route>
-    <Route path="/about" component={About}></Route>
-    <Route path="/signin" component={Login}></Route>
-    <Route path="/signup" component={SignUp}></Route>
-    <Route path="/chat" component={Chat}></Route>
-    <Route path="/room" component={Room}></Route>
-    <Route path="/profile" component={Profile}></Route>
+    <Route exact path="/" >{user?<Home/>:<Login/>}</Route>
+    <Route path="/about" >{user?<About/>:<Login/>}</Route>
+    <Route path="/signin" >{user?<Redirect to="/"/>:<Login/>}</Route>
+    <Route path="/signup" >{user?<Redirect to="/"/>:<SignUp/>}</Route>
+    <Route path="/chat">{user?<Chat/>:<Redirect to="/"/>}</Route>
+    <Route path="/room" >{user?<Room/>:<Login/>}</Route>
+    <Route path="/profile/:id" >{user?<Profile/>:<Login/>}</Route>
 
   </Switch>
 </UserContext.Provider>
