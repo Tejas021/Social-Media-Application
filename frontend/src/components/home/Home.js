@@ -56,7 +56,7 @@ const fetchPosts=async()=>{
            {
            posts.length>0?
            
-           posts.map(post=><Post key={post._id} post_id={post._id} Name={post.user} Caption={post.caption} likes={post.like} img={post.imgUrl}/>):<h3 className="text-warning">loading posts...</h3>
+           posts.map(post=><Post key={post._id} post_id={post._id} user_id={post.userId} Name={post.user} Caption={post.caption} likes={post.like} img={post.imgUrl}/>):<h3 className="text-warning">loading posts...</h3>
            }
        
 

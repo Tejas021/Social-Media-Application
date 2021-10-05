@@ -105,8 +105,8 @@ const Profile1 = () => {
             
         
         
-        <h3 className="text-warning">Your Posts:</h3>
-        {posts.map(post=><Post key={post._id} Name="you" Caption={post.caption} likes={post.like} img={post.imgUrl}/>)}
+        <h3 className="text-warning"> Posts:</h3>
+        {posts.map(post=><Post key={post._id} Name={post.user} Caption={post.caption} likes={post.like} img={post.imgUrl}/>)}
 
         </div>
       
