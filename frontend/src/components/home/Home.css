@@ -35,6 +35,14 @@
   margin-left: 10px;
 }
 
+.name_link {
+  text-decoration: none;
+  color: #fee600;
+}
+.name_link:hover {
+  color: crimson;
+}
+
 @media (min-width: 480px) and (max-width: 1025px) {
   .homecontainer {
     width: 95%;
