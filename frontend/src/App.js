@@ -8,6 +8,7 @@ import Home from './components/home/Home';
 import Login from "./components/login/Login"
 import SignUp from "./components/signup/SignUp"
 import Profile from './components/Profile/Profile';
+import Profile1 from "./components/Profile1/Profile1"
 import Chat from './components/chat/Chat';
 import Room from './components/Room/Room';
 import Cookies from 'js-cookie';
@@ -57,7 +58,8 @@ function App() {
     <Route path="/signup" >{user?<Redirect to="/"/>:<SignUp/>}</Route>
     <Route path="/chat">{user?<Chat/>:<Redirect to="/"/>}</Route>
     <Route path="/room" >{user?<Room/>:<Login/>}</Route>
-    <Route path="/profile/:id" >{user?<Profile/>:<Login/>}</Route>
+    <Route path="/my-profile" >{user?<Profile/>:<Login/>}</Route>
+    <Route path="/profile/:id" >{user?<Profile1/>:<Login/>}</Route>
 
 
   </Switch>

@@ -13,3 +13,35 @@ module.exports.user = async (req,res)=>{
     }
 
 }
+
+module.exports.handleFollowers = async(req,res)=>{
+        currentUser=req.params.id
+        follower=req.body.userId
+
+     User.updateOne({_id:currentUser},{ $push: { followers:[follower] } },(err,docs)=>{
+            if(err){console.log(err)}
+         
+        })
+        User.updateOne({_id:follower},{ $push: { following:[currentUser] } },(err,docs)=>{
+            if(err){console.log(err)}
+    
+        })
+        
+        res.status(200).send({"message":"ok"})
+}
+
+module.exports.handleUnFollow = async(req,res)=>{
+    currentUser=req.params.id
+    follower=req.body.userId
+
+ User.updateOne({_id:currentUser},{ $pullAll: { followers:[follower] } },(err,docs)=>{
+        if(err){console.log(err)}
+     
+    })
+    User.updateOne({_id:follower},{ $pullAll: { following:[currentUser] } },(err,docs)=>{
+        if(err){console.log(err)}
+
+    })
+   
+    res.status(200).send({"message":"ok"})
+}

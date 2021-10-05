@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext,useState,useEffect } from 'react'
 import Navbar from "../utilities/Navbar"
-import {useParams} from "react-router-dom"
+
 import Post from "../home/Post"
 import {UserContext} from "../../UserContext"
 import UpdateProfile from "./UpdateProfile"
@@ -10,12 +10,11 @@ const Profile = () => {
     const [display, setdisplay] = useState(false)
     const [posts,setPosts]=useState([])
     const {user,setUser}=useContext(UserContext)
-    const params = useParams();
-    console.log(params)
+    
     useEffect(()=>{
 
         const fetchPosts=async()=>{
-           const fetchposts=await fetch(`http://localhost:5000/getposts/${params.id}`,{
+           const fetchposts=await fetch(`http://localhost:5000/getposts/${user._id}`,{
                 method:"GET",
                 headers:{"Content-type":"application/json"},
             }).then(res=>(res.json())).catch(error=>console.log(error))
@@ -28,7 +27,7 @@ const Profile = () => {
       fetchPosts()
       
     
-    },[params.id])
+    },[user._id])
 
     const logout=()=>{
         fetch("http://localhost:5000/logout",{method:"GET",credentials:"include"});
@@ -38,7 +37,7 @@ const Profile = () => {
             <Navbar/>
           
          <div className="text-center ">
-         <img src="https://source.unsplash.com/random/300x300" className="profile-image"/>
+         <img src="https://source.unsplash.com/random/300x300" className="profile-image" alt="..."/>
          </div>
 
          <h3 className="text-light text-center mt-3">{user.name}</h3>
@@ -53,8 +52,8 @@ const Profile = () => {
          <h5 className="text-light ">Email: <span className="text-warning">{user.email}</span> </h5>
                 </div>
                 <div className="col-md-6  text-warning text-center row">
-                    <div className="col-md-3"><h3>213</h3>Followers</div>
-                    <div className="col-md-3"><h3>213</h3>Following</div>
+                    <div className="col-md-3"><h3>{user.followers.length}</h3>Followers</div>
+                    <div className="col-md-3"><h3>{user.following.length}</h3>Following</div>
                     
                     <button className="btn btn-warning col-md-3 mb-5 " onClick={()=>setdisplay(!display)}>Edit</button>
                     <button className="btn btn-warning  col-md-3 mb-5 " onClick={logout}>
