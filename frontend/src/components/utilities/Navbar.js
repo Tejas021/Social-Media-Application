@@ -12,8 +12,8 @@ const Navbar = () => {
              <nav className="navbar navbar-expand-lg navbar-dark bg-trans fixed-top" >
       <div className="container">
         <Link className="navbar-brand" to="/"><h3>
-            <span className="text-warning">Yata</span
-            ><span className="text-light">gram</span>
+            <span className="text-warning">Yata</span>
+            <span className="text-light">gram</span>
           </h3></Link>
         <button
           className="navbar-toggler"
@@ -31,7 +31,7 @@ const Navbar = () => {
             <input
               className="form-control ms-md-5 m-xs-2"
               type="search"
-         
+                       
               aria-label="Search"
             />
           
@@ -52,7 +52,7 @@ const Navbar = () => {
 
             <li className="nav-item">
              
-                <Link className="nav-link active mx-3" to={`/profile/${user._id}`}><i className="far fa-user-circle"></i></Link>
+                <Link className="nav-link active mx-3" to={`/my-profile/`}><i className="far fa-user-circle"></i></Link>
             </li>
             
            

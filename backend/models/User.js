@@ -29,6 +29,10 @@ const userSchema = new mongoose.Schema({
     },
     collegeId:{
         type:String
+    },followers:{
+        type:Array
+    },following:{
+        type:Array
     }
     
 
