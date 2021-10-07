@@ -9,6 +9,8 @@ const postSchema=new Schema({
     caption:{type:String},
     like:{type:Number},
     comments:{type:Array},
+    likedPeople:{type:Array},
+    dislikedPeople:{type:Array},
     imgUrl:{type:String}
 
 

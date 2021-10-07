@@ -5,7 +5,7 @@ module.exports.user = async (req,res)=>{
     
     try{
 
-        const user = await User.findById(userId)
+        const user = await User.findOne(userId)
         res.status(200).json(user)
     } catch(err){
         console.log("error")
