@@ -10,7 +10,40 @@ module.exports.addPost=async(req,res)=>{
 
 }
 module.exports.getPost=async(req,res)=>{
-    const posts=await Post.find().then(res=>res);
+    const followings=req.body.following
+    // console.log(req.body)
+    // console.log(req.body.following)
+  
+    // followings.map(async f=>{
+    //   console.log(f)
+    //   let post=await Post.find({userId:f}).then(res=>res)
+
+    //   posts.append()
+        
+    // })
+
+// let posts=[]
+let posts=[]
+const friendPosts = await Promise.all(
+followings.map((friendId) => {
+    return Post.find({ userId: friendId });
+  })
+);
+
+friendPosts.map(a=>{
+  posts=posts.concat(a)
+})
+
+// console.log(posts)
+// const userPosts=await Post.find({userId}).then(res=>res)
+
+    
+
+
+
+
+// console.log("sdaf",friendPosts)
+    
     res.status(200).send(posts)
 }
 
