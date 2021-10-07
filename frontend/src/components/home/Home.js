@@ -11,7 +11,7 @@ const Home = () => {
 
     // eslint-disable-next-line
 const {user,setUser} = useContext(UserContext)
-
+const [o,seto]=useState([])
 const [dis,setDis]=useState(false)
 
     const [posts, setPosts] = useState([])
@@ -24,7 +24,8 @@ const [dis,setDis]=useState(false)
      
           
        }
-    fetcher();    
+    fetcher();  
+    // fetchExample()  
     }, 
     
     [])
@@ -33,8 +34,11 @@ const [dis,setDis]=useState(false)
 
 
 const fetchPosts=async()=>{
+    //console.log(user.following)
+    //const followings=user.following
     const fetchposts=await fetch("http://localhost:5000/get-post",{
-        method:"GET",
+        method:"POST",
+        body:JSON.stringify({following:user.following}),
         headers:{"Content-type":"application/json"},
     }).then(res=>res.json()).catch(error=>console.log(error))
 
@@ -42,7 +46,10 @@ const fetchPosts=async()=>{
 }
 
 
+const fetchExample=()=>{
 
+    fetch("http://localhost:8081").then(res=>res.text()).then(res=>seto(res))
+}
 
     return (
         <div>
@@ -51,14 +58,14 @@ const fetchPosts=async()=>{
             <div className="container homecontainer">
               
                 {dis?<AddPost posts={posts} setPosts={setPosts} user={user}/>:<></>}
-                
+                {console.log(posts)}
                     
            {
            posts.length>0?
            
            posts.map(post=><Post key={post._id} post_id={post._id} user_id={post.userId} Name={post.user} Caption={post.caption} likes={post.like} img={post.imgUrl}/>):<h3 className="text-warning">loading posts...</h3>
            }
-       
+       {/* <p className="text-light">{o}</p> */}
 
             
            
