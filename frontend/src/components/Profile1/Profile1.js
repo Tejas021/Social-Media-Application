@@ -14,7 +14,7 @@ const Profile1 = () => {
    
     const [currentuser, setcurrentUser] = useState({"followers":[],"following":[]})
 
-    console.log(params)
+    console.log(params.id)
     useEffect(()=>{
         const fetchPosts=async()=>{
            const fetchposts=await fetch(`http://localhost:5000/getposts/${params.id}`,{
@@ -65,7 +65,7 @@ const Profile1 = () => {
         }).then(res=>res.json()).then(res=>console.log(res))
         setFollow(false)
     }
-
+    console.log(currentuser)
     return (
         <div>
             <Navbar/>

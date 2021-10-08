@@ -59,47 +59,22 @@ module.exports.deletePost=()=>{
 
 }
 
-// module.exports.handleLike=async(req,res)=>{
 
-//   const verUser = await Post.exists({likedPeople:req.body.friend_id})
-//   console.log(verUser)
-//   if (!verUser){
-//     console.log("new like")
-//       if(req.body.liked){
-        
-//         const post=await Post.findByIdAndUpdate(req.body.post_id,{$inc : {'like' : 1},$push: { likedPeople: req.body.friend_id }} ,{new: true, useFindAndModify: false})
-//         console.log("called")
-//         return res.status(200).send(post)
-//       }
-//       else{
-//         const post= await Post.findByIdAndUpdate(req.body.post_id,{$inc : {'like' : -1}}, {new: true, useFindAndModify: false})
-        
-//           return res.status(200).send(post)
-//       }
-//   } else{
-//     console.log("warning same person ")
-//     if(req.body.liked){
-        
-//       const post=await Post.findByIdAndUpdate(req.body.post_id,{$inc : {'like' : 0},$push: { likedPeople: req.body.friend_id }} ,{new: true, useFindAndModify: false})
-//       console.log("called")
-//       return res.status(200).send(post)
-//     }
-//     else{
-//       const post= await Post.findByIdAndUpdate(req.body.post_id,{$inc : {'like' : 0}}, {new: true, useFindAndModify: false})
-      
-//         return res.status(200).send(post)
-//     }
-//   }
-// }
 
 module.exports.handleLike=async(req,res)=>{
-  const verLikedUser = await Post.exists({likedPeople:req.body.friend_id})
-  const verDislikedUser = await Post.exists({dislikedPeople:req.body.friend_id})
- 
+  var friend = req.body.friend_id;
+  var post = await Post.findOne({_id:req.body.post_id})
+  const liked_people=post.likedPeople;
+  const disliked_people=post.dislikedPeople;
+  console.log(liked_people)
+  console.log(disliked_people)
+  const verLikedUser = await liked_people.includes(friend)
+  const verDislikedUser = await disliked_people.includes(friend)
+  console.log(verLikedUser)
   if(req.body.liked){
       if(!verLikedUser){
         console.log("new like")
-        const post=await Post.findByIdAndUpdate(req.body.post_id,{$inc : {'like' : 1},$push: { likedPeople: req.body.friend_id }} ,{new: true, useFindAndModify: false})
+        const post=await Post.findByIdAndUpdate(req.body.post_id,{$inc : {'like' : 1},$push: { likedPeople: req.body.friend_id },$pullAll: { dislikedPeople:[req.body.friend_id] }} ,{new: true, useFindAndModify: false})
         return res.status(200).send(post)
       } else {
         console.log("same user liked")
@@ -109,7 +84,7 @@ module.exports.handleLike=async(req,res)=>{
   } else {
       if((verLikedUser) && (!verDislikedUser)){
         console.log("new dislike")
-        const post= await Post.findByIdAndUpdate(req.body.post_id,{$inc : {'like' : -1}, $push: { dislikedPeople: req.body.friend_id }},{new: true, useFindAndModify: false})
+        const post= await Post.findByIdAndUpdate(req.body.post_id,{$inc : {'like' : -1}, $push: { dislikedPeople: req.body.friend_id },$pullAll: { likedPeople:[req.body.friend_id] }},{new: true, useFindAndModify: false})
         return res.status(200).send(post)
       } else{
         console.log("cannot dislike")

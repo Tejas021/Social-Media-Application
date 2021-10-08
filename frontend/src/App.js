@@ -12,6 +12,7 @@ import Profile1 from "./components/Profile1/Profile1"
 import Chat from './components/chat/Chat';
 import Room from './components/Room/Room';
 import Cookies from 'js-cookie';
+import CommentBox from './components/home/comments/CommentBox';
 function App() {
 
   const [user, setUser] = useState(null)
@@ -62,6 +63,7 @@ function App() {
     <Route path="/room" >{user?<Room/>:<Login/>}</Route>
     <Route path="/my-profile" >{user?<Profile/>:<Login/>}</Route>
     <Route path="/profile/:id" >{user?<Profile1/>:<Login/>}</Route>
+    <Route path="/comments" >{user?<CommentBox/>:<Login/>}</Route>
 
 
   </Switch>

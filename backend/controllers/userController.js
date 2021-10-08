@@ -2,10 +2,10 @@ const User =require("../models/User")
 
 module.exports.user = async (req,res)=>{
     const userId = req.query.userId
-    
+    console.log(userId)
     try{
-
-        const user = await User.findOne(userId)
+        
+        const user = await User.findById(userId)
         res.status(200).json(user)
     } catch(err){
         console.log("error")

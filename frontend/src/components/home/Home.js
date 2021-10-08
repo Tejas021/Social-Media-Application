@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Navbar from '../utilities/Navbar'
 import "./Home.css"
 import Post from './Post'
@@ -55,6 +56,7 @@ const fetchExample=()=>{
         <div>
             <Navbar/>
             <button onClick={()=>setDis(!dis)} className="btn btn-warning mt-2">+</button>
+           <Link to="/comments"> <button  className="btn btn-warning mt-2">comments</button> </Link>
             <div className="container homecontainer">
               
                 {dis?<AddPost posts={posts} setPosts={setPosts} user={user}/>:<></>}
