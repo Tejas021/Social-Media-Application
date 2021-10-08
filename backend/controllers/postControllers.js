@@ -11,6 +11,7 @@ module.exports.addPost=async(req,res)=>{
 }
 module.exports.getPost=async(req,res)=>{
     const followings=req.body.following
+    const userId = req.body.userId
     // console.log(req.body)
     // console.log(req.body.following)
   
@@ -34,6 +35,8 @@ friendPosts.map(a=>{
   posts=posts.concat(a)
 })
 
+
+const userPosts=await Post.find({userId}).then(res=>res)
 // console.log(posts)
 // const userPosts=await Post.find({userId}).then(res=>res)
 
@@ -43,7 +46,9 @@ friendPosts.map(a=>{
 
 
 // console.log("sdaf",friendPosts)
-    
+
+    posts=posts.concat(userPosts)
+    // console.log(posts)
     res.status(200).send(posts)
 }
 

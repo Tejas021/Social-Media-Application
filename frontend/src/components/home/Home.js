@@ -12,7 +12,7 @@ const Home = () => {
 
     // eslint-disable-next-line
 const {user,setUser} = useContext(UserContext)
-const [o,seto]=useState([])
+
 const [dis,setDis]=useState(false)
 
     const [posts, setPosts] = useState([])
@@ -29,7 +29,7 @@ const [dis,setDis]=useState(false)
     // fetchExample()  
     }, 
     
-    [])
+    [posts])
 
 
 
@@ -39,7 +39,7 @@ const fetchPosts=async()=>{
     //const followings=user.following
     const fetchposts=await fetch("http://localhost:5000/get-post",{
         method:"POST",
-        body:JSON.stringify({following:user.following}),
+        body:JSON.stringify({following:user.following,userId:user._id}),
         headers:{"Content-type":"application/json"},
     }).then(res=>res.json()).catch(error=>console.log(error))
 
@@ -47,10 +47,7 @@ const fetchPosts=async()=>{
 }
 
 
-const fetchExample=()=>{
 
-    fetch("http://localhost:8081").then(res=>res.text()).then(res=>seto(res))
-}
 
     return (
         <div>
@@ -65,7 +62,7 @@ const fetchExample=()=>{
            {
            posts.length>0?
            
-           posts.map(post=><Post key={post._id} friend_id={user._id} post_id={post._id} user_id={post.userId} Name={post.user} Caption={post.caption} likes={post.like} img={post.imgUrl}/>):<h3 className="text-warning">loading posts...</h3>
+           posts.map(post=><Post currentuser={user._id} key={post._id} friend_id={user._id} post_id={post._id} user_id={post.userId} Name={post.user} Caption={post.caption} likes={post.like} img={post.imgUrl}  likedPeople={post.likedPeople}/>):<h3 className="text-warning">loading posts...</h3>
            }
        {/* <p className="text-light">{o}</p> */}
 
