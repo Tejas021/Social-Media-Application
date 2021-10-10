@@ -27,15 +27,13 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <form className="d-flex">
-            <input
-              className="form-control ms-md-5 m-xs-2"
-              type="search"
-                       
-              aria-label="Search"
-            />
+       
+           
           
-          </form>
+            <i type="button" className="ms-5 fa fa-fw fa-search" data-bs-toggle="modal" data-bs-target="#exampleModal" ></i>
+
+          
+       
 {user?<ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
       
