@@ -2,7 +2,7 @@ const User =require("../models/User")
 
 module.exports.user = async (req,res)=>{
     const userId = req.query.userId
-    console.log(userId)
+
     try{
         
         const user = await User.findById(userId)
@@ -54,3 +54,4 @@ module.exports.searchUsers=async(req,res)=>{
         });
 
 }
+
