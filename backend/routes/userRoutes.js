@@ -7,4 +7,5 @@ router.post("/follow/:id", userController.handleFollowers)
 router.post("/unfollow/:id", userController.handleUnFollow)
 router.post("/search-users",userController.searchUsers)
 
+
 module.exports=router;

@@ -1,6 +1,7 @@
 const Conversation =require("../models/Conversation")
 
 module.exports.postConversation = async (req,res)=>{
+    // console.log(req.body)
     const newConversation = new Conversation(
         {
             members:[req.body.senderId,req.body.receiverId],

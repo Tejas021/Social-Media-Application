@@ -56,7 +56,7 @@ const submitFunction=(e)=>{
         <div>
 
         <form onSubmit={e=>submitFunction(e)}> 
-            <h1 className="text-warning">ADDPOST</h1>
+            <h4 className="text-warning">ADDPOST</h4>
             {/* <input className="form-control" placeholder="content" value={newpost.content} onChange={e=>setnewpost({...newpost,content:e.target.value})}/> */}
             <input className="form-control" type="text" placeholder="caption" value={newpost.caption} onChange={e=>setnewpost({...newpost,caption:e.target.value})}/>
            
