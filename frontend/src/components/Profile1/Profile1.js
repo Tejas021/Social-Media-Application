@@ -1,8 +1,9 @@
 import React from 'react'
 import { useContext,useState,useEffect } from 'react'
-import Navbar from "../utilities/Navbar"
+
 import {useParams} from "react-router-dom"
 import Post from "../home/Post"
+// import SearchModal from '../home/search/SearchModal'
 import {UserContext} from "../../UserContext"
 
 import "../Profile/Profile.css"
@@ -68,8 +69,8 @@ const Profile1 = () => {
     console.log(currentuser)
     return (
         <div>
-            <Navbar/>
-          
+     
+          {/* <SearchModal/> */}
          <div className="text-center ">
          <img src="https://source.unsplash.com/random/300x300" className="profile-image" alt="..."/>
          </div>

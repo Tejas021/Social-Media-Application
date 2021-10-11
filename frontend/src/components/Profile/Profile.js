@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext,useState,useEffect } from 'react'
-import Navbar from "../utilities/Navbar"
+
 
 import Post from "../home/Post"
 import {UserContext} from "../../UserContext"
@@ -34,7 +34,7 @@ const Profile = () => {
         setUser(null)}
     return (
         <div>
-            <Navbar/>
+     
           
          <div className="text-center ">
          <img src="https://source.unsplash.com/random/300x300" className="profile-image" alt="..."/>

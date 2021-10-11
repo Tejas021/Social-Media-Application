@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState,useContext } from 'react'
-import Navbar from '../utilities/Navbar'
+
 
 import {UserContext} from "../../UserContext"
 import "./SignUp.css"
@@ -55,7 +55,7 @@ try{
 
     return (
         <div>
-    <Navbar/>        
+         
     <h1 className="shead">Signup</h1>
 
 <div  className="container signupcontainer mt-5 px-5 pt-3">

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState,useContext } from 'react'
-import Navbar from '../utilities/Navbar'
+
 import {Link } from 'react-router-dom'
 import "./Login.css"
 import {UserContext} from "../../UserContext"
@@ -57,8 +57,7 @@ try{
 
     return (
         <div>
-            <Navbar/>
-            <h1 className="loginheading">Please Login</h1>
+              <h1 className="loginheading">Please Login</h1>
       
   <div  className="logincontainer mx-auto px-4 py-md-2">
 
