@@ -1,10 +1,10 @@
 import React from 'react'
 import "./about.css"
-import Navbar from "../utilities/Navbar"
+
 const About = () => {
     return (
         <div>
-          <Navbar/>
+
           
     <div className="container-fluid bg-warning  " style={{"backgroundImage": "url(./back.jpg)","padding":"7%"}}>
         

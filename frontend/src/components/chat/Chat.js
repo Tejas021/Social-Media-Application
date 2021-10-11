@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../utilities/Navbar'
+
 import {Link} from "react-router-dom"
 
 const Chat = () => {
     return (
         <div>
-            <Navbar/>
+   
             <div className="container" style={{"marginTop":"10%"}}>
         <div className="row">
             <div className="col-md-6">

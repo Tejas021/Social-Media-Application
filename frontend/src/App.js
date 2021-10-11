@@ -13,6 +13,7 @@ import Chat from './components/chat/Chat';
 import Room from './components/Room/Room';
 import Cookies from 'js-cookie';
 import CommentBox from './components/home/comments/CommentBox';
+import Navbar from './components/utilities/Navbar';
 function App() {
 
   const [user, setUser] = useState(null)
@@ -52,7 +53,7 @@ function App() {
 <Router>
 <div className="App">
 <UserContext.Provider value={{user,setUser}}>
-
+<Navbar/>
 <Switch>
 
     <Route exact path="/" >{user?<Home/>:<Login/>}</Route>

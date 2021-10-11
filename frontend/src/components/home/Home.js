@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Navbar from '../utilities/Navbar'
+
 import "./Home.css"
 import Post from './Post'
 import {useEffect,useState,useContext} from "react"
 import AddPost from './AddPost'
 
 import {UserContext} from "../../UserContext"
+// import SearchModal from './search/SearchModal'
 
 const Home = () => {
 
@@ -51,11 +52,12 @@ const fetchPosts=async()=>{
 
     return (
         <div>
-            <Navbar/>
-            <button onClick={()=>setDis(!dis)} className="btn btn-warning mt-2">+</button>
-           <Link to="/comments"> <button  className="btn btn-warning mt-2">comments</button> </Link>
+        
+   
+            <button onClick={()=>setDis(!dis)} className="btn btn-warning mt-2 fixed-bottom">+</button>
+           <Link to="/comments"> <button  className="btn btn-warning mt-2 ">comments</button> </Link>
             <div className="container homecontainer">
-              
+              {/* <SearchModal/> */}
                 {dis?<AddPost posts={posts} setPosts={setPosts} user={user}/>:<></>}
                 {console.log(posts)}
                     
