@@ -55,7 +55,7 @@ const fetchPosts=async()=>{
         
    
             <button onClick={()=>setDis(!dis)} className="btn btn-warning mt-2 fixed-bottom">+</button>
-           <Link to="/comments"> <button  className="btn btn-warning mt-2 ">comments</button> </Link>
+           {/* <Link to="/comments"> <button  className="btn btn-warning mt-2 ">comments</button> </Link> */}
             <div className="container homecontainer">
               {/* <SearchModal/> */}
                 {dis?<AddPost posts={posts} setPosts={setPosts} user={user}/>:<></>}

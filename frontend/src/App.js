@@ -64,7 +64,7 @@ function App() {
     <Route path="/room" >{user?<Room/>:<Login/>}</Route>
     <Route path="/my-profile" >{user?<Profile/>:<Login/>}</Route>
     <Route path="/profile/:id" >{user?<Profile1/>:<Login/>}</Route>
-    <Route path="/comments" >{user?<CommentBox/>:<Login/>}</Route>
+    <Route path="/comments/:id" >{user?<CommentBox/>:<Login/>}</Route>
 
 
   </Switch>
