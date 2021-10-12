@@ -68,7 +68,7 @@ const ChatBox = ({currentChat}) => {
     })
 
     try{
-      fetch("http://localhost:5000/message", {
+    fetch("http://localhost:5000/message", {
     method: "POST",
     body: JSON.stringify(msg),
     headers: {
