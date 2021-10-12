@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+
 
 import "./Home.css"
 import Post from './Post'
@@ -54,12 +54,15 @@ const fetchPosts=async()=>{
         <div>
         
    
-            <button onClick={()=>setDis(!dis)} className="btn btn-warning mt-2 fixed-bottom">+</button>
+
+   <div className="fixed-top col-md-3 border border-warning p-3 addpost-form bg-dark"><button onClick={()=>setDis(!dis)} className="btn btn-warning m-2 ">+</button> {dis?<AddPost posts={posts} setPosts={setPosts} user={user}/>:<></>} </div>
+           
+
            {/* <Link to="/comments"> <button  className="btn btn-warning mt-2 ">comments</button> </Link> */}
             <div className="container homecontainer">
               {/* <SearchModal/> */}
-                {dis?<AddPost posts={posts} setPosts={setPosts} user={user}/>:<></>}
-                {console.log(posts)}
+                
+            
                     
            {
            posts.length>0?
