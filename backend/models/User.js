@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     city:{
         type:String
     },
-    collegeId:{
+    college_id:{
         type:String
     },followers:{
         type:Array

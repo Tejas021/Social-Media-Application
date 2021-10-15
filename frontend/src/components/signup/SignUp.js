@@ -12,13 +12,15 @@ const [details,setDetails]=useState({
   name:'',
   email:'',
   password:'',
+  college_id:''
 
 })
 
 const [errors,setErrors]=useState({
   usernameError:'',
   emailError:'',
-  passwordError:''
+  passwordError:'',
+  college_id:''
 })
 
 const submitHandler= async (e)=>{
@@ -30,7 +32,7 @@ try{
   const res = await fetch('http://localhost:5000/signup', {
                 method: 'POST',
                 credentials: 'include',
-                body: JSON.stringify({name:details.name,email:details.email,password:details.password}),
+                body: JSON.stringify({name:details.name,email:details.email,password:details.password,college_id:details.college_id}),
                 headers: { 'Content-Type': 'application/json' }
             });
             const data= await res.json()
@@ -68,8 +70,8 @@ try{
           placeholder="College ID"
           id="clg_ID"
           name="clg_ID"
-          // value={}
-          onChange={e=>e.target.value}
+         value={details.college_id}
+          onChange={e=>setDetails({...details,college_id:e.target.value})}
         />
       </div>
       <div className="form-group my-3">
