@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Comments = () => {
+const Comments = ({name,text}) => {
     return (
         <div style={{paddingLeft:"1rem"}}>
-            <div ><h5><i style={{color:"black"}} className="far fa-user-circle"></i><Link  to="/" style={{color:"black",textDecoration:"none",marginLeft:"10px"}}>Luffy </Link> </h5></div>
-            <div>awesome , aag aag shatak shatak</div>
+            <div ><h5><i style={{color:"black"}} className="far fa-user-circle"></i><Link  to="/" style={{color:"black",textDecoration:"none",marginLeft:"10px"}}>{name}</Link> </h5></div>
+            <div>{text}</div>
             <hr />
         </div>
     )

@@ -4,14 +4,17 @@ import {Link} from "react-router-dom"
 import {useState} from "react"
 
 
-const Post = ({Name,Caption,likes,img,post_id,user_id,friend_id}) => {
+
+const Post = ({Name,Caption,likes,img,post_id,user_id,friend_id,likedPeople}) => {
 
  
     const [liked,setLiked]=useState(true)
     const [likeCount,setLikeCount]=useState(likes)
-    const [fillLike,setFillLike]=useState(false)
+    const [fillLike,setFillLike]=useState(likedPeople.includes(friend_id))
+  
    
-   
+ 
+
     const handleLike=(e)=>{
         e.preventDefault();
         setLiked(!liked)
@@ -51,7 +54,7 @@ const Post = ({Name,Caption,likes,img,post_id,user_id,friend_id}) => {
                    <div className="col-lg-5"><i className="far fa-thumbs-up" onClick={e=>handleLike(e)}></i><span ><p>{likeCount}</p></span></div> 
                    : <div className="col-lg-5"><i className="fas fa-thumbs-up" onClick={e=>handleLike(e)}></i><span ><p>{likeCount}</p></span></div> 
                      } 
-                    <div className="col-lg-3"><i className="far fa-comment  "></i></div>
+                   <Link to={`/comments/${post_id}`}> <div className="col-lg-3"><i className="far fa-comment" ></i></div> </Link>
                 </div>
    </div>
     )
