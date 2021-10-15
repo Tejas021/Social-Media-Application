@@ -9,7 +9,7 @@ module.exports.postConversation = async (req,res)=>{
     )
 
     try{
-        console.log(newConversation.members)
+        // console.log(newConversation.members)
         const savedConversation = await newConversation.save()
         res.status(200).json(savedConversation)
     } catch(err){

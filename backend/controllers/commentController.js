@@ -3,7 +3,7 @@ const Post = require('../models/Post')
 
 module.exports.postComment = async (req,res) =>{
     const newComment = new Comment(req.body)
-    console.log(req.body)
+    // console.log(req.body)
     try{
         const savedComment = await newComment.save()    
         await Post.findByIdAndUpdate(req.body.postId,{$push : {'comments' : savedComment._id}} ,{new: true, useFindAndModify: false})

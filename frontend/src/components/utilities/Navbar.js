@@ -3,14 +3,14 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import "./Navbar.css"
 import {UserContext} from "../../UserContext"
-// import SearchModal from '../home/search/SearchModal'
+import SearchModal from '../home/search/SearchModal'
 
 const Navbar = () => {
 
   const {user}=useContext(UserContext)
     return (
         <div>
-          {/* <SearchModal/> */}
+           <SearchModal/> 
              <nav className="navbar navbar-expand-lg navbar-dark bg-trans fixed-top" >
       <div className="container">
         <Link className="navbar-brand" to="/"><h3>

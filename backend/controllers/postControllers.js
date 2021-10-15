@@ -2,7 +2,7 @@ const { findByIdAndUpdate } = require("../models/Post")
 const Post = require("../models/Post")
 
 module.exports.addPost=async(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     const {content,caption,like,user,comments,likedPeople,imgUrl,userId}=req.body
     const np=new Post({content:content,like:like,caption:caption,user:user,comments:comments,likedPeople:likedPeople,imgUrl:imgUrl,userId:userId})
     await np.save().then((newpost)=>res.status(201).send(newpost));
@@ -71,28 +71,28 @@ module.exports.handleLike=async(req,res)=>{
   var post = await Post.findOne({_id:req.body.post_id})
   const liked_people=post.likedPeople;
   const disliked_people=post.dislikedPeople;
-  console.log(liked_people)
-  console.log(disliked_people)
+  // console.log(liked_people)
+  // console.log(disliked_people)
   const verLikedUser = await liked_people.includes(friend)
   const verDislikedUser = await disliked_people.includes(friend)
-  console.log(verLikedUser)
+  // console.log(verLikedUser)
   if(req.body.liked){
       if(!verLikedUser){
-        console.log("new like")
+        // console.log("new like")
         const post=await Post.findByIdAndUpdate(req.body.post_id,{$inc : {'like' : 1},$push: { likedPeople: req.body.friend_id },$pullAll: { dislikedPeople:[req.body.friend_id] }} ,{new: true, useFindAndModify: false})
         return res.status(200).send(post)
       } else {
-        console.log("same user liked")
+        // console.log("same user liked")
         const post=await Post.findByIdAndUpdate(req.body.post_id,{$inc : {'like' : 0}} ,{new: true, useFindAndModify: false})
         return res.status(200).send(post)
       }
   } else {
       if((verLikedUser) && (!verDislikedUser)){
-        console.log("new dislike")
+        // console.log("new dislike")
         const post= await Post.findByIdAndUpdate(req.body.post_id,{$inc : {'like' : -1}, $push: { dislikedPeople: req.body.friend_id },$pullAll: { likedPeople:[req.body.friend_id] }},{new: true, useFindAndModify: false})
         return res.status(200).send(post)
       } else{
-        console.log("cannot dislike")
+        // console.log("cannot dislike")
         const post=await Post.findByIdAndUpdate(req.body.post_id,{$inc : {'like' : 0}} ,{new: true, useFindAndModify: false})
         return res.status(200).send(post)
       }

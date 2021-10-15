@@ -12,6 +12,8 @@ const Room = () => {
   const { user } = useContext(UserContext);
   const [conversations, setConversations] = useState([]);
   const [currentChat,setCurrentChat]=useState(null)
+  let friends = user.followers.concat(user.following)
+  console.log(friends)
   // const [followers, setfollowers] = useState([])
  
   // console.log(`------user-----`)
@@ -29,7 +31,9 @@ const Room = () => {
 
 
 
-const postConversation=async(userId)=>{
+const postConversation=async(e,userId)=>{
+  e.preventDefault()
+  console.log("click")
   // console.log(userId,userId)
   await  fetch("http://localhost:5000/conversation",{
     method:"POST",
@@ -47,9 +51,9 @@ const postConversation=async(userId)=>{
         <div className="row">
           <div className="col-md-3 p-2">
           <div className="my-5 p-3 bg-warning">
-              <h3 style={{ textAlign: "center" }}>Followers</h3>
+              <h3 style={{ textAlign: "center" }}>Friends</h3>
              
-             {user.followers.map(f=><div key={f} onClick={e=>postConversation(f)}><Follower userId={f}/> </div>)}
+             {user.followers.map(f=><div key={f} onClick={e=>postConversation(e,f)}><Follower userId={f}/> </div>)}
            
             
             </div>

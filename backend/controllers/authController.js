@@ -55,7 +55,7 @@ const {password,email }=req.body;
 }
 
 module.exports.logout=async (req,res)=>{
-console.log("logout")
+// console.log("logout")
     res.cookie('jwt', "", { maxAge: 1 })
     res.status(200).json({ logout: true })
     
