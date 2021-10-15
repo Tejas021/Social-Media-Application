@@ -10,9 +10,9 @@ const Post = ({Name,Caption,likes,img,post_id,user_id,friend_id,likedPeople}) =>
  
     const [liked,setLiked]=useState(true)
     const [likeCount,setLikeCount]=useState(likes)
-    const [fillLike,setFillLike]=useState(likedPeople.includes(friend_id))
+    // const [fillLike,setFillLike]=useState(likedPeople.includes(friend_id))
   
-   
+    const [fillLike,setFillLike]=useState(false)
  
 
     const handleLike=(e)=>{
