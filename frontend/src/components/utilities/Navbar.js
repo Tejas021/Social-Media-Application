@@ -10,7 +10,7 @@ const Navbar = () => {
   const {user}=useContext(UserContext)
     return (
         <div>
-           <SearchModal/> 
+          <SearchModal/>
              <nav className="navbar navbar-expand-lg navbar-dark bg-trans fixed-top" >
       <div className="container">
         <Link className="navbar-brand" to="/"><h3>

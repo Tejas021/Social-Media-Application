@@ -65,9 +65,9 @@ module.exports.signup=async (req,res)=>{
 
 
 try{
-    const {name,password,email }=req.body;
+    const {name,password,email,college_id }=req.body;
 
-const newUser= await User.create({name,password,email})
+const newUser= await User.create({name,password,email,college_id})
 
 
 const token = createJWT(newUser._id)
