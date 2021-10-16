@@ -13,7 +13,16 @@ const Room = () => {
   const [conversations, setConversations] = useState([]);
   const [currentChat,setCurrentChat]=useState(null)
   let friends = user.followers.concat(user.following)
-  console.log(friends)
+  let filteredFriends = []
+  friends.forEach(f => {
+    if (!filteredFriends.includes(f)){
+        filteredFriends.push(f)
+    }
+    
+  });
+  console.log(conversations)
+  
+  
   // const [followers, setfollowers] = useState([])
  
   // console.log(`------user-----`)
@@ -39,7 +48,7 @@ const postConversation=async(e,userId)=>{
     method:"POST",
     headers:{"Content-type":"application/json"},
     body:JSON.stringify({senderId:user._id,receiverId:userId})
-  })
+  }).then(res=>res.json()).then(r=>setConversations([...conversations,r]))
 }
 
 
@@ -53,7 +62,7 @@ const postConversation=async(e,userId)=>{
           <div className="my-5 p-3 bg-warning">
               <h3 style={{ textAlign: "center" }}>Friends</h3>
              
-             {user.followers.map(f=><div key={f} onClick={e=>postConversation(e,f)}><Follower userId={f}/> </div>)}
+             {filteredFriends.map(f=><div key={f} onClick={e=>postConversation(e,f)}><Follower userId={f}/> </div>)}
            
             
             </div>

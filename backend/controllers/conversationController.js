@@ -2,11 +2,15 @@ const Conversation =require("../models/Conversation")
 
 module.exports.postConversation = async (req,res)=>{
     // console.log(req.body)
+     const ifUser = await Conversation.findOne({members:[req.body.senderId,req.body.receiverId]})
+    //  console.log(ifUser)
+     if(!ifUser){
     const newConversation = new Conversation(
         {
             members:[req.body.senderId,req.body.receiverId],
         }
     )
+
 
     try{
         // console.log(newConversation.members)
@@ -15,6 +19,8 @@ module.exports.postConversation = async (req,res)=>{
     } catch(err){
         res.status(500).json(err)
     }
+
+ }
 }
    
 

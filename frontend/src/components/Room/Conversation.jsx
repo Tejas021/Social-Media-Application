@@ -7,7 +7,7 @@ const Conversation = ({conversation,currentUser}) => {
 
     useEffect(()=>{
         // console.log('call')
-        const friendId = conversation.members.find(m => m !== currentUser._id)
+        const friendId = conversation.members.find(m => m !== currentUser._id )
         const getUser =  async ()=>{
            
          await fetch("http://localhost:5000/user?userId=" + friendId)
