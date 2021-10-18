@@ -31,7 +31,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+app.use(cookieParser())
 
 
 //IMPORTING ROUTES
@@ -41,6 +41,7 @@ const conversationRoutes=require("./routes/conversationRoutes")
 const messageRoutes=require("./routes/messageRoutes.js")
 const userRoutes=require("./routes/userRoutes.js")
 const commentRoutes = require('./routes/commentRoutes')
+const eventRoutes = require('./routes/eventRoutes')
 
 
 
@@ -63,6 +64,7 @@ app.use(postRoutes)
 app.use(conversationRoutes)
 app.use(messageRoutes)
 app.use(userRoutes)
+app.use(eventRoutes)
 app.use(commentRoutes)
 
 app.get("",(req,res)=>{

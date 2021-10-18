@@ -4,7 +4,7 @@ const router=express.Router();
 router.post("/signup",authController.signup)
 router.post("/signin",authController.signin)
 router.get("/logout",authController.logout)
-router.post("/verifyuser",authController.verifyUser)
+router.get("/verifyuser",authController.verifyUser)
 router.patch("/updateuser",authController.updateUser)
 // router.post("/signin",authController.login)
 // router.post("/signup",authController.signup)
