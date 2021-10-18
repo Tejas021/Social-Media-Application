@@ -42,7 +42,7 @@ const {password,email }=req.body;
 
   const token=createJWT(user._id)
 
-  res.cookie("jwt",token,{maxAge:maxAge*1000})
+  res.cookie("jwt",token,{maxAge:maxAge*1000,httpOnly:true})
   res.status(201).send({user})
   }
   catch(err){
@@ -71,7 +71,7 @@ const newUser= await User.create({name,password,email,college_id})
 
 
 const token = createJWT(newUser._id)
-res.cookie("jwt",token,{maxAge:maxAge*1000})
+res.cookie("jwt",token,{maxAge:maxAge*1000,httpOnly: true,})
 
 
 res.status(201).send({user:newUser})
@@ -89,9 +89,11 @@ catch(err){
 
         module.exports.verifyUser=async (req,res,next)=>{
 
-            const token = req.body.cookie.jwt;
+            // const token = req.body.cookie.jwt;
+            // console.log(req.cookies.jwt)
+            const token=req.cookies.jwt
 
-           
+ 
                 
               
                 if (token) {

@@ -49,6 +49,10 @@ const Navbar = () => {
                
                 <Link className="nav-link active mx-3" to="/about"><i className="fa fa-info-circle"></i></Link>
             </li>
+            <li className="nav-item">
+               
+                <Link className="nav-link active mx-3" to="/events">Events</Link>
+            </li>
 
             <li className="nav-item">
              
