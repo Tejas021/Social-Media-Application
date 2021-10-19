@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SingleEvent = () => {
+const SingleEvent = ({event}) => {
     return (
         <div>
 
@@ -10,8 +10,8 @@ const SingleEvent = () => {
             4.link(know more) */}
 
 
-            <h2 className="text-light">Name</h2>
-            <h4 className="text-light">Info</h4>
+            <h2 className="text-light">{event.name}</h2>
+            <h4 className="text-light">{event.description}</h4>
             
         </div>
     )
