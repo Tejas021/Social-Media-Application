@@ -1,10 +1,12 @@
 import React from 'react'
 import SingleEvent from './SingleEvent'
-import {useEffect} from "react"
+import {useEffect,useState} from "react"
+
 const Event = () => {
-// useEffect(()=>{
-//     fetch()
-// })
+    const [events,setEvents]=useState([])
+useEffect(()=>{
+    fetch("http://localhost:5000/get-events").then(res=>res.json()).then(res=>setEvents(res))
+})
     return (
         <div>
             {/* Hero Image
@@ -12,9 +14,10 @@ const Event = () => {
             event cards */}
 
             <h1 className="text-light">Upcoming Events</h1>
+            {events.map(e=><SingleEvent event={e} key={e._id}/>)}
+            {/* <SingleEvent/>
             <SingleEvent/>
-            <SingleEvent/>
-            <SingleEvent/>
+            <SingleEvent/> */}
             
         </div>
     )
