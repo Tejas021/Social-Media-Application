@@ -51,10 +51,10 @@ const Post = ({Name,Caption,likes,img,post_id,user_id,friend_id,likedPeople,crea
         <div className="caption m-1">{Caption} </div>
                 <div className="row like mt-3">
                       { !fillLike ?  
-                   <div className="col-md-3"><i className="far fa-thumbs-up" onClick={e=>handleLike(e)}></i><span ><p>{likeCount}</p></span></div> 
-                   : <div className="col-md-3"><i className="fas fa-thumbs-up" onClick={e=>handleLike(e)}></i><span ><p>{likeCount}</p></span></div> 
+                   <div className="col-md-3 col-xs-4"><i className="far fa-thumbs-up" onClick={e=>handleLike(e)}></i><span ><p>{likeCount}</p></span></div> 
+                   : <div className="col-md-3 col-xs-4"><i className="fas fa-thumbs-up" onClick={e=>handleLike(e)}></i><span ><p>{likeCount}</p></span></div> 
                      } 
-                   <div className="col-md-3"><Link to={`/comments/${post_id}`}> <i className="far fa-comment" ></i></Link></div> 
+                   <div className="col-md-3 col-xs-4"><Link to={`/comments/${post_id}`}> <i className="far fa-comment" ></i></Link></div> 
                 <p className="text-start text-warning ms-2">{format(created_At)}</p>
                 </div>
    </div>
