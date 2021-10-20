@@ -1,161 +1,205 @@
-import React from 'react'
-import { useState,useContext } from 'react'
+import React from "react";
+import { useState, useContext } from "react";
 
-
-import {UserContext} from "../../UserContext"
-import "./SignUp.css"
+import { UserContext } from "../../UserContext";
+import "./SignUp.css";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
+  const { user, setUser } = useContext(UserContext);
+  const [details, setDetails] = useState({
+    name: "",
+    email: "",
+    password: "",
+    college_id: "",
+  });
 
-const {user,setUser}=useContext(UserContext)
-const [details,setDetails]=useState({
-  name:'',
-  email:'',
-  password:'',
-  college_id:''
+  const [errors, setErrors] = useState({
+    usernameError: "",
+    emailError: "",
+    passwordError: "",
+    college_id: "",
+  });
 
-})
+  const submitHandler = async (e) => {
+    console.log("click");
+    e.preventDefault();
+    setErrors(errors);
 
-const [errors,setErrors]=useState({
-  usernameError:'',
-  emailError:'',
-  passwordError:'',
-  college_id:''
-})
+    try {
+      const res = await fetch("http://localhost:5000/signup", {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify({
+          name: details.name,
+          email: details.email,
+          password: details.password,
+          college_id: details.college_id,
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
 
-const submitHandler= async (e)=>{
-  console.log('click')
-  e.preventDefault();
-  setErrors(errors);
-
-try{
-  const res = await fetch('http://localhost:5000/signup', {
-                method: 'POST',
-                credentials: 'include',
-                body: JSON.stringify({name:details.name,email:details.email,password:details.password,college_id:details.college_id}),
-                headers: { 'Content-Type': 'application/json' }
-            });
-            const data= await res.json()
-   
-          if (data.errors) {
-            setErrors({
-              emailError:data.errors.email,
-              usernameError:data.errors.name,
-              passwordError:data.errors.password
-
-            })
-
-        }
-        if (data.user) {
-            setUser(data.user)
-        }
-      }  catch(error){
-        console.log(error)
+      if (data.errors) {
+        setErrors({
+          emailError: data.errors.email,
+          usernameError: data.errors.name,
+          passwordError: data.errors.password,
+        });
       }
-}
+      if (data.user) {
+        setUser(data.user);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-
-    return (
-        <div>
-         
-    <h1 className="shead">Signup</h1>
-
-<div  className="container signupcontainer mt-5 px-5 pt-3">
-
-    <form onSubmit={e=>submitHandler(e)}>
-      <div className="form-group my-3">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="College ID"
-          id="clg_ID"
-          name="clg_ID"
-         value={details.college_id}
-          onChange={e=>setDetails({...details,college_id:e.target.value})}
-        />
-      </div>
-      <div className="form-group my-3">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Username"
-          id="username"
-          name="name"
-          value={details.name}
-          onChange={(e)=>{
-            setDetails(prevState => ({
-                ...prevState,
-                name: e.target.value
-            }));
-          }}
-        />
-      </div>
-      <div className="text-danger" type="password">{errors.usernameError}</div>
-      <div className="form-group my-3">
-        <input
-          type="email"
-          className="form-control"
-          placeholder="Email ID"
-          id="email"
-          name="email"
-          value={details.email}
-          onChange={(e)=>{
-            setDetails(prevState => ({
-                ...prevState,
-                email: e.target.value
-            }));
-          }}
-        />
-      </div>
-      <div className="text-danger" type="password">{errors.emailError}</div>
-      <input
-          type="date"
-          className="form-control"
-          placeholder="Date of Birth"
-          id="age"
-          name="age"
-          // value={details.date}
-          onChange={e=>e.target.value}
-        />
-      <div className="form-group my-3">
-        <input
-          type="password"
-          className="form-control"
-          placeholder=" Password *"
-          id="password1"
-          name="password1"
-          value={details.password}
-          onChange={(e)=>{
-            setDetails(prevState => ({
-                ...prevState,
-                password: e.target.value
-            }));
-          }}
-        />
-      </div>
-      <div className="text-danger" type="password">{errors.passwordError}</div>
-      <div className="form-group my-2">
-        <input
-          type="password"
-          className="form-control"
-          placeholder="Confirm Password *"
-          id="password2"
-          name="password2"
-          // value={details.confirm_password}
-          onChange={e=>e.target.value}
-        />
-      </div>
-      <div className="form-group my-3">
-        <button type='submit' className="btn btn-dark signupsubmit" >Signup</button>
-        <button type='submit' className="btn btn-dark signupsubmit" >SignIn</button>
-      </div> 
-       
-    </form>
-              
-   </div>
-    {user}
+  return (
+    <div>
+      <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div className="wrapper wrapper--w680">
+          <div className="card card-4">
+            <div className="card-body">
+              <h2 className="title">Signup</h2>
+              <form onSubmit={(e) => submitHandler(e)}>
+                <div className="row row-space">
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label">College ID</label>
+                      <input
+                        type="text"
+                        className="input--style-4"
+                        id="clg_ID"
+                        name="clg_ID"
+                        value={details.college_id}
+                        onChange={(e) =>
+                          setDetails({ ...details, college_id: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label">Username</label>
+                      <input
+                        type="text"
+                        className="input--style-4"
+                        id="username"
+                        name="name"
+                        value={details.name}
+                        onChange={(e) => {
+                          setDetails((prevState) => ({
+                            ...prevState,
+                            name: e.target.value,
+                          }));
+                        }}
+                      />
+                    </div>
+                    <div className="text-danger" type="password">
+                      {errors.usernameError}
+                    </div>
+                  </div>
+                </div>
+                <div className="row row-space">
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label">Email ID</label>
+                      <input
+                        type="email"
+                        className="input--style-4"
+                        id="email"
+                        name="email"
+                        value={details.email}
+                        onChange={(e) => {
+                          setDetails((prevState) => ({
+                            ...prevState,
+                            email: e.target.value,
+                          }));
+                        }}
+                      />
+                    </div>
+                    <div className="text-danger" type="password">
+                      {errors.emailError}
+                    </div>
+                  </div>
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label">Birthday</label>
+                      <input
+                        type="date"
+                        className="input--style-4"
+                        id="age"
+                        name="age"
+                        // value={details.date}
+                        onChange={(e) => e.target.value}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="row row-space">
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label">Password</label>
+                      <input
+                        type="password"
+                        className="input--style-4"
+                        id="password1"
+                        name="password1"
+                        value={details.password}
+                        onChange={(e) => {
+                          setDetails((prevState) => ({
+                            ...prevState,
+                            password: e.target.value,
+                          }));
+                        }}
+                      />
+                    </div>
+                    <div className="text-danger" type="password">
+                      {errors.passwordError}
+                    </div>
+                  </div>
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label">Confirm Password</label>
+                      <input
+                        type="password"
+                        className="input--style-4"
+                        id="password2"
+                        name="password2"
+                        // value={details.confirm_password}
+                        onChange={(e) => e.target.value}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-t-15">
+                  <button
+                    className="signupbtn btn--radius-2 btn--yellow"
+                    type="submit"
+                  >
+                    SignUp
+                  </button>
+                  <button
+                    className="signupbtn btn--radius-2 mx-3 btn--yellow"
+                    type="submit"
+                  >
+                    <Link
+                      style={{ color: "white", textDecoration: "none" }}
+                      to="/signin"
+                    >
+                      LogIn
+                    </Link>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-    )
-}
+      </div>
+      {user}
+    </div>
+  );
+};
 
-export default SignUp
+export default SignUp;
