@@ -57,19 +57,19 @@ const SignUp = () => {
 
   return (
     <div>
-      <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+      <div className="hello page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div className="wrapper wrapper--w680">
           <div className="card card-4">
-            <div className="card-body">
+            <div className="card-hello">
               <h2 className="title">Signup</h2>
               <form onSubmit={(e) => submitHandler(e)}>
                 <div className="row row-space">
                   <div className="col-2">
-                    <div className="input-group">
+                    <div className="sinput-group">
                       <label className="label">College ID</label>
-                      <input
+                      <input className="sinput"
                         type="text"
-                        className="input--style-4"
+                        className="sinput--style-4"
                         id="clg_ID"
                         name="clg_ID"
                         value={details.college_id}
@@ -80,11 +80,11 @@ const SignUp = () => {
                     </div>
                   </div>
                   <div className="col-2">
-                    <div className="input-group">
+                    <div className="sinput-group">
                       <label className="label">Username</label>
-                      <input
+                      <input className="sinput"
                         type="text"
-                        className="input--style-4"
+                        className="sinput--style-4"
                         id="username"
                         name="name"
                         value={details.name}
@@ -103,11 +103,11 @@ const SignUp = () => {
                 </div>
                 <div className="row row-space">
                   <div className="col-2">
-                    <div className="input-group">
+                    <div className="sinput-group">
                       <label className="label">Email ID</label>
-                      <input
+                      <input className="sinput"
                         type="email"
-                        className="input--style-4"
+                        className="sinput--style-4"
                         id="email"
                         name="email"
                         value={details.email}
@@ -124,11 +124,11 @@ const SignUp = () => {
                     </div>
                   </div>
                   <div className="col-2">
-                    <div className="input-group">
+                    <div className="sinput-group">
                       <label className="label">Birthday</label>
-                      <input
+                      <input className="sinput"
                         type="date"
-                        className="input--style-4"
+                        className="sinput--style-4"
                         id="age"
                         name="age"
                         // value={details.date}
@@ -139,11 +139,11 @@ const SignUp = () => {
                 </div>
                 <div className="row row-space">
                   <div className="col-2">
-                    <div className="input-group">
+                    <div className="sinput-group">
                       <label className="label">Password</label>
-                      <input
+                      <input className="sinput"
                         type="password"
-                        className="input--style-4"
+                        className="sinput--style-4"
                         id="password1"
                         name="password1"
                         value={details.password}
@@ -160,11 +160,11 @@ const SignUp = () => {
                     </div>
                   </div>
                   <div className="col-2">
-                    <div className="input-group">
+                    <div className="sinput-group">
                       <label className="label">Confirm Password</label>
-                      <input
+                      <input className="sinput"
                         type="password"
-                        className="input--style-4"
+                        className="sinput--style-4"
                         id="password2"
                         name="password2"
                         // value={details.confirm_password}
@@ -175,22 +175,25 @@ const SignUp = () => {
                 </div>
                 <div className="p-t-15">
                   <button
-                    className="signupbtn btn--radius-2 btn--yellow"
+                    className="signupbtn btn--radius-2 btn--signup"
                     type="submit"
                   >
                     SignUp
                   </button>
-                  <button
-                    className="signupbtn btn--radius-2 mx-3 btn--yellow"
-                    type="submit"
-                  >
+                  
                     <Link
                       style={{ color: "white", textDecoration: "none" }}
                       to="/signin"
-                    >
-                      LogIn
-                    </Link>
+                    
+                  >
+                    <button
+                    className="signupbtn btn--radius-2 mx-3 btn--login"
+                    type="submit"
+                  >
+                    
+                  LogIn
                   </button>
+                    </Link>
                 </div>
               </form>
             </div>
