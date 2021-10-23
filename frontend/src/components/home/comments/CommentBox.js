@@ -6,7 +6,7 @@ import {UserContext} from "../../../UserContext"
 
 const CommentBox = () => {
 
-    const {user,setUser} = useContext(UserContext)
+    const {user} = useContext(UserContext)
     const params = useParams();
     const [comments,setComments] = useState([])
     const [newComment,setNewComment] = useState('')

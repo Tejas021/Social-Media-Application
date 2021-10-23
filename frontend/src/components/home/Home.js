@@ -21,10 +21,15 @@ const [dis,setDis]=useState(false)
     
     useEffect(() => {
        const fetcher=async()=>{
-           await fetchPosts(); 
+     await fetch("http://localhost:5000/get-post",{
+            method:"POST",
+            body:JSON.stringify({following:user.following,userId:user._id}),
+            headers:{"Content-type":"application/json"},
+        }).then(res=>res.json()).then(res=>setPosts(res)).catch(error=>console.log(error))
+     
     }
     fetcher()},
-    [])
+    [user.following,user._id])
 
 
 useEffect(() => {
@@ -35,17 +40,17 @@ useEffect(() => {
         }))
 }, [posts])
 
-const fetchPosts=async()=>{
-    //console.log(user.following)
-    //const followings=user.following
-    const fetchposts=await fetch("http://localhost:5000/get-post",{
-        method:"POST",
-        body:JSON.stringify({following:user.following,userId:user._id}),
-        headers:{"Content-type":"application/json"},
-    }).then(res=>res.json()).then(res=>setPosts(res)).catch(error=>console.log(error))
+// const fetchPosts=async()=>{
+//     //console.log(user.following)
+//     //const followings=user.following
+//     const fetchposts=await fetch("http://localhost:5000/get-post",{
+//         method:"POST",
+//         body:JSON.stringify({following:user.following,userId:user._id}),
+//         headers:{"Content-type":"application/json"},
+//     }).then(res=>res.json()).then(res=>setPosts(res)).catch(error=>console.log(error))
 
-    return fetchposts;
-}
+//     return fetchposts;
+// }
 
 
 
