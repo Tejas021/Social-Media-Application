@@ -17,6 +17,7 @@ const Navbar = () => {
             <span className="text-warning">Yata</span>
             <span className="text-light">gram</span>
           </h3></Link>
+          <i type="button" className="me-auto fa fa-fw fa-search" data-bs-toggle="modal" data-bs-target="#exampleModal" ></i>
         <button
           className="navbar-toggler"
           type="button"
@@ -28,12 +29,13 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+       
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
        
            
           
-            <i type="button" className="ms-5 fa fa-fw fa-search" data-bs-toggle="modal" data-bs-target="#exampleModal" ></i>
-
+         
           
        
 {user?<ul className="navbar-nav ms-auto mb-2 mb-lg-0">
