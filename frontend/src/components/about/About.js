@@ -6,7 +6,7 @@ const About = () => {
         <div>
 
           
-    <div className="container-fluid bg-warning  " style={{"backgroundImage": "url(./back.jpg)","padding":"7%"}}>
+    <div className="container-fluid bg-warning  " style={{"backgroundImage": "url(img/background.jpg)","padding":"7%","backgroundRepeat":"no-repeat","backgroundSize":"cover"}}>
         
       <div className="container">
         <div className="row">
@@ -44,7 +44,7 @@ const About = () => {
       <div className="row">
         <div className="col-md-3 p-3">
             <div className="card bg-warning p-2" >
-                <img src="images.png" className="card-img-top" alt="..."/>
+                <img src="img/profile.jpg" className="card-img-top" alt="..."/>
                 <div className="card-body">
                     <h4>Tejas Kolwankar</h4>
                     <p> Roll no : 29 </p>
@@ -53,28 +53,28 @@ const About = () => {
         </div>
         <div className="col-md-3 p-3">
             <div className="card bg-warning p-2" >
-                <img src="images.png" className="card-img-top" alt="..."/>
+                <img src="img/profile.jpg" className="card-img-top" alt="..."/>
                 <div className="card-body">
-                    <h4>Tejas Kolwankar</h4>
-                    <p> Roll no : 29 </p>
+                    <h4>Akshay Hegde</h4>
+                    <p> Roll no : 22 </p>
                 </div>
               </div>
         </div>
         <div className="col-md-3 p-3">
             <div className="card bg-warning p-2"  >
-                <img src="images.png" className="card-img-top" alt="..."/>
+                <img src="img/profile.jpg" className="card-img-top" alt="..."/>
                 <div className="card-body">
-                    <h4>Tejas Kolwankar</h4>
-                    <p> Roll no : 29 </p>
+                    <h4>Yogesh Jain</h4>
+                    <p> Roll no : 23 </p>
                 </div>
               </div>
         </div>
         <div className="col-md-3 p-3">
             <div className="card bg-warning p-2" >
-                <img src="images.png" className="card-img-top" alt="..."/>
+                <img src="img/profile.jpg" className="card-img-top" alt="..."/>
                 <div className="card-body">
-                    <h4>Tejas Kolwankar</h4>
-                    <p> Roll no : 29 </p>
+                    <h4>Mohd. Asim</h4>
+                    <p> Roll no : 15 </p>
                 </div>
               </div>
             </div>

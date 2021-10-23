@@ -37,7 +37,7 @@ const Profile = () => {
      
           
          <div className="text-center ">
-         <img src="https://source.unsplash.com/random/300x300" className="profile-image" alt="..."/>
+         <img src="img/profile.jpg" className="profile-image" alt="..."/>
          </div>
 
          <h3 className="text-light text-center mt-3">{user.name}</h3>

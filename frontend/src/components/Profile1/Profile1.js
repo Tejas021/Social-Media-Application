@@ -72,7 +72,7 @@ const Profile1 = () => {
      
           {/* <SearchModal/> */}
          <div className="text-center ">
-         <img src="https://source.unsplash.com/random/300x300" className="profile-image" alt="..."/>
+         <img src="img/profile.png" className="profile-image" alt="..."/>
          </div>
 
          <h3 className="text-light text-center mt-3">{currentuser.name}</h3>
