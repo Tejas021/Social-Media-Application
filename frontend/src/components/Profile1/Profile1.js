@@ -7,6 +7,7 @@ import Post from "../home/Post"
 import {UserContext} from "../../UserContext"
 
 import "../Profile/Profile.css"
+import ProfilePic from '../Profile/ProfilePic'
 const Profile1 = () => {
     const {user}=useContext(UserContext)
     const params = useParams();
@@ -71,9 +72,7 @@ const Profile1 = () => {
         <div>
      
           {/* <SearchModal/> */}
-         <div className="text-center ">
-         <img src="img/profile.png" className="profile-image" alt="..."/>
-         </div>
+        <ProfilePic/>
 
          <h3 className="text-light text-center mt-3">{currentuser.name}</h3>
          <h5 className="text-warning text-center mb-5">{currentuser.department}</h5>

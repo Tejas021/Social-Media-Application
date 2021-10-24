@@ -8,7 +8,7 @@ const Message = ({message,myMsg}) => {
         <div> 
              <li className={myMsg ? "out" : "in"}>
                     <div className="chat-img">
-                      <img alt="Avtar" src="images.png" />
+                      <img alt="Avtar" src="/img/profile.jpg" />
                     </div>
                     <div className="chat-body">
                       <div className="chat-message">

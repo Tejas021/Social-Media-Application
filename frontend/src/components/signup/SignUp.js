@@ -67,9 +67,9 @@ const SignUp = () => {
                   <div className="col-2">
                     <div className="sinput-group">
                       <label className="label">College ID</label>
-                      <input className="sinput"
+                      <input 
                         type="text"
-                        className="sinput--style-4"
+                        className="sinput--style-4 sinput"
                         id="clg_ID"
                         name="clg_ID"
                         value={details.college_id}
@@ -82,9 +82,9 @@ const SignUp = () => {
                   <div className="col-2">
                     <div className="sinput-group">
                       <label className="label">Username</label>
-                      <input className="sinput"
+                      <input 
                         type="text"
-                        className="sinput--style-4"
+                        className="sinput--style-4 sinput"
                         id="username"
                         name="name"
                         value={details.name}
@@ -105,9 +105,9 @@ const SignUp = () => {
                   <div className="col-2">
                     <div className="sinput-group">
                       <label className="label">Email ID</label>
-                      <input className="sinput"
+                      <input 
                         type="email"
-                        className="sinput--style-4"
+                        className="sinput sinput--style-4"
                         id="email"
                         name="email"
                         value={details.email}
@@ -126,9 +126,9 @@ const SignUp = () => {
                   <div className="col-2">
                     <div className="sinput-group">
                       <label className="label">Birthday</label>
-                      <input className="sinput"
+                      <input 
                         type="date"
-                        className="sinput--style-4"
+                        className="sinput sinput--style-4"
                         id="age"
                         name="age"
                         // value={details.date}
@@ -141,9 +141,9 @@ const SignUp = () => {
                   <div className="col-2">
                     <div className="sinput-group">
                       <label className="label">Password</label>
-                      <input className="sinput"
+                      <input 
                         type="password"
-                        className="sinput--style-4"
+                        className=" sinput sinput--style-4"
                         id="password1"
                         name="password1"
                         value={details.password}
@@ -162,9 +162,9 @@ const SignUp = () => {
                   <div className="col-2">
                     <div className="sinput-group">
                       <label className="label">Confirm Password</label>
-                      <input className="sinput"
+                      <input 
                         type="password"
-                        className="sinput--style-4"
+                        className="sinput sinput--style-4"
                         id="password2"
                         name="password2"
                         // value={details.confirm_password}
