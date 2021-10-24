@@ -10,7 +10,7 @@ const Admin = () => {
            method:"POST",
            headers:{"Content-Type":"application/json"},
            body:JSON.stringify(event)
-        }).then(res=>res.json()).then(res=>console.log(res))
+        }).then(res=>res.json()).then(res=>console.log(res)).then(setevent({name:"",description:"",link:""}))
     }
     return (
         <div className='container p-5'>

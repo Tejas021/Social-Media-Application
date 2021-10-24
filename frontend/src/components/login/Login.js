@@ -112,7 +112,7 @@ const Login = () => {
             </div> */}
                     <button
                       className="btn btn-dark btn-login fw-bold my-3"
-                      // type="click"
+                      
                     >
                       <Link
                         style={{ color: "white", textDecoration: "none" }}

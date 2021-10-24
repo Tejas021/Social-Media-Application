@@ -55,10 +55,13 @@ const Profile = () => {
                     <div className="col-md-3"><h3>{user.followers.length}</h3>Followers</div>
                     <div className="col-md-3"><h3>{user.following.length}</h3>Following</div>
                     
-                    <button className="btn btn-warning col-md-3 mb-5 " onClick={()=>setdisplay(!display)}>Edit</button>
-                    <button className="btn btn-warning  col-md-3 mb-5 " onClick={logout}>
+
+                    <div className="col-md-3 mb-5">    <button className="btn btn-warning  px-4" onClick={()=>setdisplay(!display)}>Edit</button></div>
+                    <div className="col-md-3 mb-5 "> <button className="btn btn-outline-warning px-4  " onClick={logout}>
 log out
-         </button>
+         </button></div>
+                
+                   
                     </div>
 
             </div>
