@@ -55,13 +55,14 @@ function App() {
 <div className="App">
 <UserContext.Provider value={{user,setUser}}>
 <Navbar/>
+
 <Switch>
 
     <Route exact path="/" >{user?<Home/>:<Login/>}</Route>
     <Route path="/about" >{user?<About/>:<Login/>}</Route>
     <Route path="/signin" >{user?<Redirect to="/"/>:<Login/>}</Route>
     <Route path="/signup" >{user?<Redirect to="/"/>:<SignUp/>}</Route>
-    <Route path="/chat">{user?<Room/>:<Redirect to="/"/>}</Route>
+    <Route path="/chat">{user?<Room/>:<Login/>}</Route>
     <Route path="/room" >{user?<Chat/>:<Login/>}</Route>
     <Route path="/my-profile" >{user?<Profile/>:<Login/>}</Route>
     <Route path="/profile/:id" >{user?<Profile1/>:<Login/>}</Route>

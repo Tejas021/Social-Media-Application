@@ -6,6 +6,8 @@ import Post from "../home/Post"
 import {UserContext} from "../../UserContext"
 import UpdateProfile from "./UpdateProfile"
 import "./Profile.css"
+import ProfilePic from './ProfilePic'
+
 const Profile = () => {
     const [display, setdisplay] = useState(false)
     const [posts,setPosts]=useState([])
@@ -34,16 +36,14 @@ const Profile = () => {
         setUser(null)}
     return (
         <div>
-     
-          
-         <div className="text-center ">
-         <img src="img/profile.jpg" className="profile-image" alt="..."/>
-         </div>
 
+          
+        <ProfilePic/>
+ 
          <h3 className="text-light text-center mt-3">{user.name}</h3>
          <h5 className="text-warning text-center mb-5">{user.department}</h5>
 
-        
+      
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-6">

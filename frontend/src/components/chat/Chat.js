@@ -1,13 +1,13 @@
 import React from 'react'
-import { useState,useContext,useEffect,useRef } from 'react'
-import {Link} from "react-router-dom"
-import { UserContext } from '../../UserContext'
-import {io} from 'socket.io-client'
+import { useState } from 'react'
+// import {Link} from "react-router-dom"
+// import { UserContext } from '../../UserContext'
+// import {io} from 'socket.io-client'
 
 const Chat = () => {
     const [room, setRoom] = useState("")
     const [roompass, setRoompass] = useState("")
-    const {user,setUser}=useContext(UserContext)
+    // const {user,setUser}=useContext(UserContext)
     // const socket = useRef();
 
     // useEffect(()=>{

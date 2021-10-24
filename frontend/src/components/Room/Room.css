@@ -91,6 +91,6 @@ li.in {
   color: #272727 !important;
 }
 
-/* .card {
-  background-image: url(chat.jpg);
-} */
+.card {
+  background-color: black;
+}

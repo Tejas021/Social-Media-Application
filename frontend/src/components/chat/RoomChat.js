@@ -25,7 +25,7 @@ const RoomChat = () => {
                   </div>
                   <button className="btn btn-dark col-md-2 col-xs-1" onClick={handleSubmit}>send</button>
                 </div>
-                 </>  ) : ( <div style={{textAlign:"center"}}>start a chat</div>  )}
+                 </>  ) : ( <div style={{textAlign:"center"}} >start a chat</div>  )}
               </div>
             </div>
         </div>

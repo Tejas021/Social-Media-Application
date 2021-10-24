@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../utilities/Navbar";
+// import Navbar from "../utilities/Navbar";
 import ChatBox from "./ChatBox";
 import "./Room.css";
 import { useState, useEffect, useContext } from "react";
@@ -56,7 +56,7 @@ const postConversation=async(e,userId)=>{
 
   return (
     <div>
-      <Navbar />
+      
       <div className="container mt-5">
         <div className="row">
           <div className="col-md-3 p-2">

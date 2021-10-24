@@ -7,6 +7,7 @@ import {useEffect,useState,useContext} from "react"
 import AddPost from './AddPost'
 
 import {UserContext} from "../../UserContext"
+// import ProfilePic from '../Profile/ProfilePic'
 // import SearchModal from './search/SearchModal'
 
 const Home = () => {

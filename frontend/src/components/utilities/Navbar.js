@@ -17,7 +17,7 @@ const Navbar = () => {
             <span className="text-warning">Yata</span>
             <span className="text-light">gram</span>
           </h3></Link>
-          <i type="button" className="me-auto fa fa-fw fa-search" data-bs-toggle="modal" data-bs-target="#exampleModal" ></i>
+          <i type="button" className="me-auto fa fa-fw fa-search " data-bs-toggle="modal" data-bs-target="#exampleModal" ></i>
         <button
           className="navbar-toggler"
           type="button"
