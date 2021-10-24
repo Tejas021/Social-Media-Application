@@ -37,7 +37,7 @@ const Profile = () => {
      
           
          <div className="text-center ">
-         <img src="https://source.unsplash.com/random/300x300" className="profile-image" alt="..."/>
+         <img src="img/profile.jpg" className="profile-image" alt="..."/>
          </div>
 
          <h3 className="text-light text-center mt-3">{user.name}</h3>
@@ -72,7 +72,7 @@ log out
             {display?<UpdateProfile user_id={user._id} setUser={setUser}/>:<></>}
         
         <h3 className="text-warning">Your Posts:</h3>
-        {posts.map(post=><Post key={post._id} Name="you" Caption={post.caption} likes={post.like} img={post.imgUrl}/>)}
+        {posts.map(post=><Post currentuser={user._id} created_At={post.createdAt} key={post._id} friend_id={user._id} post_id={post._id} user_id={post.userId} Name="You" Caption={post.caption} likes={post.like} img={post.imgUrl}  likedPeople={post.likedPeople}/>)}
 
         </div>
       

@@ -1,60 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Login</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="all.css"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>Login</title>
 </head>
+
 <body>
-  <h1 class="loginheading">Please Login</h1>
-      
-  <div  class="logincontainer mx-auto px-4 py-md-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+          <div class="card-body p-4 p-sm-5">
+            <h1 class="card-title text-center mb-5 fw-bold fs-3">Login</h1>
+            <form class="loginform">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="username" name="username" placeholder="email" />
+                <label for="username">Email</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+                <label for="password">Password</label>
+              </div>
 
-    <form class="loginform">
-      <div class="form-group my-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Username"
-          id="username"
-          name="username"
-        />
+              <div class="d-grid">
+                <button class="btn btn-dark btn-login fw-bold my-3" type="submit">Login</button>
+                <button class="btn btn-dark btn-login fw-bold my-3" type="submit">SignUp</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="form-group my-2">
-        <input
-          type="password"
-          class="form-control"
-          placeholder=" Password *"
-          id="password"
-          name="password"
-        />
-      </div>
-      <div class="row">
-      <div class="form-group col-lg-5 text-center my-3 ">
-        <button class="loginsubmit btn btn-dark">Login</button>
-      </div> 
-      
-     <div  class="or col-lg-2 my-3"><h3>or</h3></div>
-     <div class="form-group col-lg-5 my-3">
-     <button class="loginsubmit btn btn-dark sgnpbtn">Signup</button>
-    </div> 
-
+    </div>
   </div>
-    </form>
-              
-   </div>
-  
-  
-        
-        
-                 
-                  
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
 </body>
+
 </html>
