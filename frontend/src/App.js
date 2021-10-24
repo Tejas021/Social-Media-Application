@@ -15,6 +15,7 @@ import Room from './components/Room/Room';
 import CommentBox from './components/home/comments/CommentBox';
 import Navbar from './components/utilities/Navbar';
 import Event from './components/events/Event';
+import Admin from './components/admin/Admin';
 function App() {
 
   const [user, setUser] = useState(null)
@@ -68,6 +69,7 @@ function App() {
     <Route path="/profile/:id" >{user?<Profile1/>:<Login/>}</Route>
     <Route path="/events" >{user?<Event/>:<Login/>}</Route>
     <Route path="/comments/:id" >{user?<CommentBox/>:<Login/>}</Route>
+    <Route path="/admin-panel" ><Admin/></Route>
 
 
   </Switch>
