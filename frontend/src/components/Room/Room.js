@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../utilities/Navbar";
 import ChatBox from "./ChatBox";
 import "./Room.css";
@@ -81,6 +82,9 @@ const postConversation=async(e,userId)=>{
             </div>
           </div>
         </div>
+      </div>
+      <div style={{marginLeft:"10%"}}>
+       <Link to="/room"> <button type="button" class="btn btn-danger">Room Chat</button> </Link>
       </div>
     </div>
   );

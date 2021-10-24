@@ -41,7 +41,10 @@ const conversationRoutes=require("./routes/conversationRoutes")
 const messageRoutes=require("./routes/messageRoutes.js")
 const userRoutes=require("./routes/userRoutes.js")
 const commentRoutes = require('./routes/commentRoutes')
+
+const roomRoutes = require('./routes/roomRoutes')
 const eventRoutes = require('./routes/eventRoutes')
+
 
 
 
@@ -66,6 +69,7 @@ app.use(messageRoutes)
 app.use(userRoutes)
 app.use(eventRoutes)
 app.use(commentRoutes)
+app.use(roomRoutes)
 
 app.get("",(req,res)=>{
     res.send("home")
