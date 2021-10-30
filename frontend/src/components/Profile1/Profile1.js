@@ -56,6 +56,7 @@ const Profile1 = () => {
             body:JSON.stringify({userId:user._id})
         }).then(res=>res.json()).then(res=>console.log(res))
         setFollow(true)
+        // setUser({...user)
     }
 
     const handleUnfollow=(e)=>{

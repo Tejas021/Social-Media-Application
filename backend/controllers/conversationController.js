@@ -3,8 +3,9 @@ const Conversation =require("../models/Conversation")
 module.exports.postConversation = async (req,res)=>{
     // console.log(req.body)
      const ifUser = await Conversation.findOne({members:[req.body.senderId,req.body.receiverId]})
+     const ifUser1 = await Conversation.findOne({members:[req.body.receiverId,req.body.senderId]})
     //  console.log(ifUser)
-     if(!ifUser){
+     if(!(ifUser||ifUser1)){
     const newConversation = new Conversation(
         {
             members:[req.body.senderId,req.body.receiverId],

@@ -5,7 +5,7 @@ const Conversation = ({conversation,currentUser}) => {
 
     const [user,setUser]=useState({})
 
-    useEffect(()=>{
+    useEffect(()=>{ 
         // console.log('call')
         const friendId = conversation.members.find(m => m !== currentUser._id )
         const getUser =  async ()=>{
