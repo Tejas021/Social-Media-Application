@@ -12,7 +12,7 @@ const SingleEvent = ({event}) => {
                 <div class="col-sm-7">
                     <div class="card-body">
                         <h3 class="card-title text-warning">{event.name}</h3>
-                        <p class="card-text"><span className="text-warning">Event Description:</span> {event.description}</p>
+                        <p class="card-text"><span className="text-warning">Event Description: </span> {event.description}</p>
                         <a href={event.link} class="btn btn-warning">Know More</a>
                     </div>
                 </div>

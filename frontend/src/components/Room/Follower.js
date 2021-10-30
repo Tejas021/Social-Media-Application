@@ -11,7 +11,7 @@ const Follower = ({userId}) => {
         const getUser =  async ()=>{
            
          await fetch("http://localhost:5000/user?userId=" + userId)
-         .then(res=>res.json())
+         .then(res=>res.json() )
          .then(res=>setFollower(res))
          .catch(error=>console.log(error))
                     

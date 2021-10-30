@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import Navbar from "../utilities/Navbar";
 import ChatBox from "./ChatBox";
 import "./Room.css";
@@ -57,10 +57,10 @@ const postConversation=async(e,userId)=>{
   return (
     <div>
       
-      <div className="container mt-5">
+      <div className="container ">
         <div className="row">
           <div className="col-md-3 p-2">
-          <div className="my-5 p-3 bg-warning">
+          <div className=" p-3 bg-warning">
               <h3 style={{ textAlign: "center" }}>Friends</h3>
              
              {filteredFriends.map(f=><div key={f} onClick={e=>postConversation(e,f)}><Follower userId={f}/> </div>)}
@@ -69,12 +69,12 @@ const postConversation=async(e,userId)=>{
             </div>
           </div>
           <div className="col-md-6 p-2">
-            <div className="my-5 bg-warning p-1">
+            <div className=" bg-warning p-1">
               <ChatBox currentChat={currentChat}/>
             </div>
           </div>
           <div className="col-md-3 p-2">
-            <div className="my-5 p-3 bg-warning">
+            <div className=" p-3 bg-warning">
               <h3 style={{ textAlign: "center" }}>Conversations</h3>
               {conversations.map((c) => {
               return <div key={conversations._id} onClick={()=>setCurrentChat(c)}> <Conversation conversation={c} currentUser={user} /> </div>
@@ -83,9 +83,9 @@ const postConversation=async(e,userId)=>{
           </div>
         </div>
       </div>
-      <div style={{marginLeft:"10%"}}>
+      {/* <div style={{marginLeft:"10%"}}>
        <Link to="/room"> <button type="button" class="btn btn-danger">Room Chat</button> </Link>
-      </div>
+      </div> */}
     </div>
   );
 };

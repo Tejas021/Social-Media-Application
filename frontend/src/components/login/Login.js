@@ -110,7 +110,7 @@ const Login = () => {
                     {/* <div className="or col-lg-2 my-3">
               <h3>or</h3>
             </div> */}
-                    <button
+                    <div
                       className="btn btn-dark btn-login fw-bold my-3"
                       
                     >
@@ -120,7 +120,7 @@ const Login = () => {
                       >
                         Signup
                       </Link>
-                    </button>
+                    </div>
                   </div>
                 </form>
               </div>

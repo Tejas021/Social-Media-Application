@@ -61,7 +61,10 @@ const ChatBox = ({currentChat}) => {
       conversationId : currentChat._id
     }
     
+    console.log(currentChat.members.find(m=>m!==user._id))
+   
     socket.current.emit("sendMessage",{
+      
       senderId:user._id,
       receiverId:currentChat.members.find(member=>member !== user._id),
       text:newMessage
@@ -94,13 +97,30 @@ setNewMessage('')
     return (
         <div>
             <div className="card">
-              <div className="card-body height3">
-              {
+              <div className="card-body height3" style={{backgroundColor:"black"}} >
+
+        {currentChat?(<div> <main>
+{
+messages.map(m=>{
+  return < div key={m._id} ref={scrollRef}><Message  message={m} myMsg={m.sender === user._id} /> </div>
+})
+}
+</main>
+<div className="row mt-1">
+<div className="col-md-10 col-xs-10">
+  <input className="form-control" placeholder="your message"
+   onChange={e=>setNewMessage(e.target.value)} 
+   value={newMessage}  />
+</div>
+<button className="btn btn-dark col-md-2 col-xs-1" onClick={handleSubmit}>send</button>
+</div></div>):(<div style={{textAlign:"center",color:"#fff"}}>start a chat</div>)}
+                
+              {/* {
                   currentChat ? ( <>
                 <ul className="chat-list"> 
                 {
                   messages.map(m=>{
-                    return <div key={m._id} ref={scrollRef}><Message  message={m} myMsg={m.sender === user._id} /> </div>
+                    return < div key={m._id} ref={scrollRef}><Message  message={m} myMsg={m.sender === user._id} /> </div>
                   })
                 }
                 
@@ -114,7 +134,8 @@ setNewMessage('')
                   </div>
                   <button className="btn btn-dark col-md-2 col-xs-1" onClick={handleSubmit}>send</button>
                 </div>
-                 </>  ) : ( <div style={{textAlign:"center",color:"#fff"}}>start a chat</div>  )}
+                 </>  ) : ( <div style={{textAlign:"center",color:"#fff"}}>start a chat</div>  )} */}
+                 
               </div>
             </div>
         </div>
