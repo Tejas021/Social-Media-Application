@@ -43,20 +43,19 @@
   color: crimson;
 }
 
-.addpost-form{
-  margin-top:5em;
+.addpost-form {
+  margin-top: 5em;
 }
-
 
 @media (min-width: 480px) and (max-width: 1025px) {
   .homecontainer {
-    width: 95%;
+    width: 100%;
     margin-top: 5rem;
   }
 }
 @media screen and (max-width: 480px) {
   .homecontainer {
-    width: 95%;
+    width: 100%;
     margin-top: 5rem;
   }
 }

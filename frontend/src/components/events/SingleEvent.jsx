@@ -7,7 +7,7 @@ const SingleEvent = ({event}) => {
             <div class="card bg-dark border border-warning my-2 text-light" style={{"width": "100%"}}>
             <div class="row no-gutters">
                 <div class="col-sm-5">
-                    <img class="card-img" alt="new image1" src="img/carousel-2.png" style={{width:"100%",height:"100%"}}/>
+                    <img class="card-img" alt="new image1" src="img/carousel-1.jpg" style={{width:"100%",height:"100%"}}/>
                 </div>
                 <div class="col-sm-7">
                     <div class="card-body">

@@ -15,9 +15,15 @@ const mongodb = "mongodb+srv://admin:admin123@cluster0.abkev.mongodb.net/myFirst
 const app=express() //creating an express application
 
 let PORT =process.env.PORT||5000
-mongoose.connect(mongodb,{useNewUrlParser: true,  useUnifiedTopology: true  } ).then(()=>{app.listen(PORT,()=>{
-    console.log(`Listening at ${PORT}`)
-})}) //connecting to the database
+
+// .then(()=>{app.listen(PORT,()=>{
+//     console.log(`Listening at ${PORT}`)
+// })}) 
+
+
+
+
+
 
 
 
@@ -28,10 +34,66 @@ var corsOptions = {
     optionsSuccessStatus: 200 // For legacy browser support
 }
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser())
+
+//socket server connection
+
+const server = require('http').createServer(app);
+var socketio = require('socket.io')
+const io = socketio(server,{cors:{corsOptions}});
+
+
+//connecting to the database
+
+mongoose.connect(mongodb,{useNewUrlParser: true,  useUnifiedTopology: true  } ).then(server.listen(PORT, () => {
+  console.log(`listening on port ${PORT}`);
+})
+)
+
+
+//socket Stuff Lmao
+let users=[]
+const addUser = (userId, socketId) => {
+    !users.some((user) => user.userId === userId) &&
+      users.push({ userId, socketId });
+  };
+
+  const getUser = (userId) => {
+    return users.find((user) => user.userId === userId);
+  };
+
+  const removeUser = (socketId) => {
+    users = users.filter((user) => user.socketId !== socketId);
+  };
+
+
+io.on("connection",(socket)=>{
+    socket.on("addUser", userId => {   
+    addUser(userId, socket.id);
+    io.emit("getUsers", users);
+  });
+  socket.on("sendMessage", ({ senderId, receiverId, text }) => {
+    const user = getUser(receiverId);
+    user?console.log("present"):console.log("mnot")
+    user?
+    io.to(user.socketId).emit("getMessage", {
+      senderId,
+      text,
+    })
+    :null;
+  });
+  socket.on("disconnect", () => {
+    console.log("a user disconnected!");
+    removeUser(socket.id);
+    io.emit("getUsers", users);
+  });
+
+})
+
+
 
 
 //IMPORTING ROUTES
@@ -71,6 +133,8 @@ app.use(eventRoutes)
 app.use(commentRoutes)
 app.use(roomRoutes)
 
-app.get("",(req,res)=>{
+app.get("/",(req,res)=>{
     res.send("home")
 })
+
+
