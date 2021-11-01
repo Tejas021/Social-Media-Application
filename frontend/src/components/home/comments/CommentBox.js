@@ -3,6 +3,7 @@ import Comments from './Comments'
 import { useContext,useState,useEffect } from 'react'
 import {useParams} from 'react-router-dom'
 import {UserContext} from "../../../UserContext"
+import "./Commet.css"
 
 const CommentBox = () => {
 
@@ -47,29 +48,19 @@ const CommentBox = () => {
 
     return (
         <div className="p-5">
-            <div style={{
-                border:"2px solid white",
-                
-                bordeRadius: "10px",
-                width:"40vw",
-                backgroundColor:"#272727",
-                color:"#fff",
-                margin:"0 auto",
-                position:"relative",
-                
-            }} >
+            <div className='comment-card' >
                 <hr />
                {
                    comments.map(comment=><Comments key={comment._id} name={comment.senderName} text={comment.text} />)
                }
                 <div style={{bottom:"20px",left:"10px",width:"100%"}} className="row p-4 ">
-                  <div className="col-md-10 col-xs-10 ">
+                  <div className="col-md-10 col-9 ">
                     <input className="form-control border border-warning" placeholder="your comment"
                      onChange={e=>setNewComment(e.target.value)} 
                      value={newComment}  
                        />
                   </div>
-                  <button onClick={handleSubmit} className="btn btn-warning col-md-2 col-xs-1" >send</button>
+                  <button onClick={handleSubmit} className="btn btn-warning col-md-2 col-3" >send</button>
                 </div>
             </div>
         </div>

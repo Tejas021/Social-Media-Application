@@ -173,15 +173,16 @@ const SignUp = () => {
                     </div>
                   </div>
                 </div>
-                <div className="p-t-15">
-                  <button
+                <div className="p-t-15 row">
+
+                  <div className="col-5  col-md-6  col-sm-6">  <button
                     className="signupbtn btn--radius-2 btn--signup"
                     type="submit"
                   >
                     SignUp
-                  </button>
-                  
-                    <Link
+                  </button></div>
+                  <div className="col-5  col-md-6  col-sm-6">
+                  <Link
                       style={{ color: "white", textDecoration: "none" }}
                       to="/signin"
                     
@@ -194,6 +195,11 @@ const SignUp = () => {
                   LogIn
                   </button>
                     </Link>
+                  </div>
+                     
+                
+                  
+                 
                 </div>
               </form>
             </div>

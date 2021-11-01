@@ -19,7 +19,7 @@ const ChatBox = ({currentChat}) => {
   // console.log(currentChat)
 
   useEffect(()=>{
-    socket.current=io('ws://localhost:8900')
+    socket.current=io('ws://localhost:5000')
     socket.current.on("getMessage",data=>{
       setArrivalMessage({
         sender: data.senderId,
@@ -107,12 +107,12 @@ messages.map(m=>{
 }
 </main>
 <div className="row mt-1">
-<div className="col-md-10 col-xs-10">
+<div className="col-md-10 col-9">
   <input className="form-control" placeholder="your message"
    onChange={e=>setNewMessage(e.target.value)} 
    value={newMessage}  />
 </div>
-<button className="btn btn-dark col-md-2 col-xs-1" onClick={handleSubmit}>send</button>
+<button className="btn btn-dark col-md-2 col-3" onClick={handleSubmit}>send</button>
 </div></div>):(<div style={{textAlign:"center",color:"#fff"}}>start a chat</div>)}
                 
               {/* {

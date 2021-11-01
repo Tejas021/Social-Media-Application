@@ -52,12 +52,12 @@ const Profile = () => {
          <h5 className="text-light ">Email: <span className="text-warning">{user.email}</span> </h5>
                 </div>
                 <div className="col-md-6  text-warning text-center row">
-                    <div className="col-md-3"><h3>{user.followers.length}</h3>Followers</div>
-                    <div className="col-md-3"><h3>{user.following.length}</h3>Following</div>
+                    <div className="col-md-3 col-6"><h3>{user.followers.length}</h3>Followers</div>
+                    <div className="col-md-3 col-6"><h3>{user.following.length}</h3>Following</div>
                     
 
-                    <div className="col-md-3 mb-5">    <button className="btn btn-warning  px-4" onClick={()=>setdisplay(!display)}>Edit</button></div>
-                    <div className="col-md-3 mb-5 "> <button className="btn btn-outline-warning px-4  " onClick={logout}>
+                    <div className=" col-md-3 mt-3 col-6">    <button className="btn btn-warning  px-4" onClick={()=>setdisplay(!display)}>Edit</button></div>
+                    <div className="col-md-3 mt-3 col-6"> <button className="btn btn-outline-warning px-4  " onClick={logout}>
 log out
          </button></div>
                 
