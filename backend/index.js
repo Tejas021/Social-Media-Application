@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
+const dotenv = require("dotenv").config()
 //DATABASE VARIABLE
 const mongodb = "mongodb+srv://admin:admin123@cluster0.abkev.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
@@ -14,6 +14,7 @@ const mongodb = "mongodb+srv://admin:admin123@cluster0.abkev.mongodb.net/myFirst
 
 const app=express() //creating an express application
 
+// app.use(dotenv.config())
 let PORT =process.env.PORT||5000
 
 // .then(()=>{app.listen(PORT,()=>{

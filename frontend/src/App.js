@@ -11,7 +11,7 @@ import Profile from './components/Profile/Profile';
 import Profile1 from "./components/Profile1/Profile1"
 import Chat from './components/chat/Chat';
 import Room from './components/Room/Room';
-// import Cookies from 'js-cookie';
+
 import CommentBox from './components/home/comments/CommentBox';
 import Navbar from './components/utilities/Navbar';
 import Event from './components/events/Event';
@@ -21,8 +21,7 @@ function App() {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    // const cookie = Cookies.get()
-    // document.cookie="user=Tejas";
+
 
 
     const verifyUser = async () => {
@@ -47,7 +46,7 @@ function App() {
 
   }, [])
 
-  // console.log (user)
+
 
 
   return (

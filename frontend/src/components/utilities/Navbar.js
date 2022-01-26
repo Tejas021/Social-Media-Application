@@ -41,19 +41,19 @@ const Navbar = () => {
 {user?<ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
       
-              <Link className="nav-link active mx-3" to="/"><i className=" fa fa-fw fa-home"></i></Link>
+              <Link className="nav-link active mx-3" to="/"><div className='navi'><i className=" fa fa-fw fa-home"></i><p className='nav-name'>home</p></div></Link>
             </li>
             <li className="nav-item">
             
-              <Link className="nav-link active mx-3" to="/chat"><i className="far fa-comment "></i></Link>
+              <Link className="nav-link active mx-3" to="/chat">  <div className='navi'><i className="far fa-comment "></i><p className='nav-name'>chat</p></div>   </Link>
           </li>
             <li className="nav-item">
                
-                <Link className="nav-link active mx-3" to="/about"><i className="fa fa-info-circle"></i></Link>
+                <Link className="nav-link active mx-3" to="/about"><div className='navi'><i className="fa fa-info-circle"></i><p className='nav-name'>about</p></div></Link>
             </li>
             <li className="nav-item">
                
-                <Link className="nav-link active mx-3" to="/events"><i className="fas fa-headphones"></i></Link>
+                <Link className="nav-link active mx-3" to="/events"><div className='navi'><i className="fas fa-headphones"></i><p className='nav-name'>events</p></div></Link>
             </li>
 
             <li className="nav-item">

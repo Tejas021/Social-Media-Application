@@ -3,9 +3,10 @@ const jwt = require("jsonwebtoken")
 
 const maxAge= 5*24*60*60;
 
-
+const key = process.env.SECRET_KEY
 const createJWT=(id)=>{
-    return jwt.sign({id},"somekey",{
+    console.log(key)
+    return jwt.sign({id},key,{
     expiresIn:maxAge
     })
 }
@@ -36,6 +37,7 @@ const alertError = (err) => {
 module.exports.signin=async (req,res)=>{
 
 const {password,email }=req.body;
+console.log(password,email)
 
   try{
       const user=await User.login(email,password);
@@ -48,6 +50,7 @@ const {password,email }=req.body;
   catch(err){
     
    let errors=alertError(err)
+   console.log(errors)
     res.status(400).send({errors})
   }
 
