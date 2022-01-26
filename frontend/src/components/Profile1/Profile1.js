@@ -86,11 +86,13 @@ const Profile1 = () => {
          <h5 className="text-light ">City: <span className="text-warning">{currentuser.city}</span></h5>
          <h5 className="text-light ">Email: <span className="text-warning">{currentuser.email}</span> </h5>
                 </div>
-                <div className="col-md-6  text-warning text-center row">
+                <div className="col-md-6  text-warning text-center row ">
                     <div className="col-md-3 col-6"><h3>{currentuser.followers.length}</h3>Followers</div>
-                    <div className="col-md-3 col-6"><h3>{currentuser.following.length}</h3>Following</div>
-                    {follow?<button className="btn btn-outline-warning" onClick={e=>handleUnfollow(e)}>Following</button>:
-                     <button className="btn btn-warning" onClick={e=>handleFollow(e)}>Follow</button>
+                    <div className="col-md-3 col-6 "><h3>{currentuser.following.length}</h3>Following</div>
+                   
+                   
+                    {(user._id!==currentuser._id)?follow?<button className="btn btn-outline-warning" onClick={e=>handleUnfollow(e)}>Following</button>:
+                     <button className="btn btn-warning" onClick={e=>handleFollow(e)}>Follow</button>:<></>
                     }
                    
                     

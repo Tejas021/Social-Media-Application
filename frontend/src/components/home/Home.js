@@ -61,7 +61,7 @@ useEffect(() => {
         
    
 
-   <div className="fixed-bottom col-md-3 border border-warning p-3 addpost-form bg-dark"><button onClick={()=>setDis(!dis)} className="btn btn-warning m-2 ">+</button> {dis?<AddPost posts={posts} setPosts={setPosts} user={user}/>:<></>} </div>
+   <div className="fixed-bottom  col-md-12 col-lg-3 border border-warning p-3 addpost-form bg-dark"><button onClick={()=>setDis(!dis)} className="btn btn-warning m-2 ">+</button> {dis?<AddPost posts={posts} setPosts={setPosts} user={user}/>:<></>} </div>
            
 
            {/* <Link to="/comments"> <button  className="btn btn-warning mt-2 ">comments</button> </Link> */}
