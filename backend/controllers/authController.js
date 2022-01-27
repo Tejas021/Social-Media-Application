@@ -1,12 +1,14 @@
 const User = require("../models/User")
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
+const router = require("../routes/messageRoutes");
+const {verifyToken} = require('../middleware/verifyToken')
 
 const maxAge= 5*24*60*60;
 
 const key = process.env.SECRET_KEY
-const createJWT=(id)=>{
+const createJWT=(id,isAdmin)=>{
     console.log(key)
-    return jwt.sign({id},key,{
+    return jwt.sign({id,isAdmin},key,{
     expiresIn:maxAge
     })
 }
@@ -37,15 +39,16 @@ const alertError = (err) => {
 module.exports.signin=async (req,res)=>{
 
 const {password,email }=req.body;
+
 console.log(password,email)
 
   try{
       const user=await User.login(email,password);
 
-  const token=createJWT(user._id)
+  const token=createJWT(user._id,user.isAdmin)
 
-  res.cookie("jwt",token,{maxAge:maxAge*1000,httpOnly:true})
-  res.status(201).send({user})
+//   res.cookie("jwt",token,{maxAge:maxAge*1000,httpOnly:true})
+  res.status(201).send({...user,token})
   }
   catch(err){
     
@@ -57,73 +60,56 @@ console.log(password,email)
 
 }
 
-module.exports.logout=async (req,res)=>{
-// console.log("logout")
-    res.cookie('jwt', "", { maxAge: 1 })
-    res.status(200).json({ logout: true })
+// module.exports.logout=async (req,res)=>{
+// // console.log("logout")
+//     res.cookie('jwt', "", { maxAge: 1 })
+//     res.status(200).json({ logout: true })
     
-    }
+//     }
 
 module.exports.signup=async (req,res)=>{
 
 
 try{
-    const {name,password,email,college_id }=req.body;
+    const {name,password,email,college_id,isAdmin }=req.body;
+    console.log(req.body)
 
-const newUser= await User.create({name,password,email,college_id})
-
-
-const token = createJWT(newUser._id)
-res.cookie("jwt",token,{maxAge:maxAge*1000,httpOnly: true,})
-
-
-res.status(201).send({user:newUser})
+const newUser= await User.save({name,password,email,college_id,isAdmin})
+console.log(newUser)
+const token = createJWT(newUser._id,newUser.isAdmin)
+// res.cookie("jwt",token,{maxAge:maxAge*1000,httpOnly: true,})
+const data = {...newUser,token}
+console.log(data);
+res.status(201).send({user:data})
 }
 catch(err){
    
     let errors=alertError(err)
     
     res.status(400).json({errors})
+    }
+
+        
 }
 
-        
-        
+module.exports.verifyUser =  async (req, res) => {
+    console.log("---auth---")
+    console.log(req.user)
+    if (req.user) {
+        try {
+            console.log(req.user)
+            const user = await User.findById(req.user.id)
+            res.status(200).json(user)
+        } catch (err) {
+            console.log(err)
+            res.status(500).send(err)
         }
 
-        module.exports.verifyUser=async (req,res,next)=>{
-
-            // const token = req.body.cookie.jwt;
-            // console.log(req.cookies.jwt)
-            const token=req.cookies.jwt
-
- 
-                
-              
-                if (token) {
-                
-                    jwt.verify(token, process.env.SECRET_KEY, async (err, decodedToken) => {
-                     
-                        if (err) {
-                            console.log(err.message)
-                        } else {
-                            let user = await User.findById(decodedToken.id)
-                            res.json(user);
-                            next();
-            
-                        }
-                    })
-                } else {
-                    next();
-                }
-
-           
-              
-          
-
-
-          
-        }
-
+    } else {
+        // res.status(404).send("no token")
+        console.log("no token")
+    }
+}
 
         module.exports.updateUser=async(req,res)=>{
           

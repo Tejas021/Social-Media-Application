@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import { UserContext } from "../../UserContext";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
-import { userRequest } from "../../axios";
+import { userRequest,publicRequest } from "../../axios";
 
 const SignUp = () => {
   const { user, setUser } = useContext(UserContext);
@@ -39,7 +39,8 @@ const SignUp = () => {
         // }),
       //   headers: { "Content-Type": "application/json" },
       // });
-      const data = await userRequest.post("signup",{
+      console.log(details);
+      const data = await publicRequest.post("signup",{
         name: details.name,
         email: details.email,
         password: details.password,
@@ -55,12 +56,14 @@ const SignUp = () => {
       }
       if (data.user) {
         setUser(data.user);
+        // const token = user.user.accessToken
+        // localStorage.setItem('token',token)
       }
     } catch (error) {
       console.log(error);
     }
   };
-
+  console.log(user);
   return (
     <div>
       <div className="hello page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
