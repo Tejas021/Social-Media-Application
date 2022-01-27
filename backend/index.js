@@ -7,7 +7,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require("dotenv").config()
 //DATABASE VARIABLE
-const mongodb = "mongodb+srv://admin:admin123@cluster0.abkev.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const mongodb = "mongodb://admin:admin123@cluster0-shard-00-00.abkev.mongodb.net:27017,cluster0-shard-00-01.abkev.mongodb.net:27017,cluster0-shard-00-02.abkev.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-lh7h1x-shard-0&authSource=admin&retryWrites=true&w=majority"
 
 
 
