@@ -33,7 +33,8 @@ const userSchema = new mongoose.Schema({
         type:Array
     },following:{
         type:Array
-    }
+    },
+    Admin:{type:Boolean,default:false},
     
 
 })

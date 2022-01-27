@@ -35,7 +35,7 @@ function App() {
         //   headers: { 'Content-Type': 'application/json' },
         //   // body:JSON.stringify({cookie})
         // });
-        const data = await userRequest.get("verifyuser",{withCredentials:true}).then(res=>res.data)
+        const data = await userRequest.get("/verifyUser",{withCredentials:true}).then(res=>res.data)
         setUser(data);
       } catch (error) {
         console.log(error)
