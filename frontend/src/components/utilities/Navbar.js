@@ -58,7 +58,7 @@ const Navbar = () => {
 
             <li className="nav-item">
              
-                <Link className="nav-link active mx-3" to={`/my-profile/`}><i className="far fa-user-circle"></i></Link>
+                <Link className="nav-link active mx-3" to={`/my-profile/`}> <div className='navi'><i className="far fa-user-circle"></i> <p className='nav-name'>profile</p></div></Link>
             </li>
             
            

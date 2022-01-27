@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import { UserContext } from "../../UserContext";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
+import { userRequest } from "../../axios";
 
 const SignUp = () => {
   const { user, setUser } = useContext(UserContext);
@@ -27,18 +28,23 @@ const SignUp = () => {
     setErrors(errors);
 
     try {
-      const res = await fetch("http://localhost:5000/signup", {
-        method: "POST",
-        credentials: "include",
-        body: JSON.stringify({
-          name: details.name,
-          email: details.email,
-          password: details.password,
-          college_id: details.college_id,
-        }),
-        headers: { "Content-Type": "application/json" },
-      });
-      const data = await res.json();
+      // const res = await fetch("http://localhost:5000/signup", {
+      //   method: "POST",
+      //   credentials: "include",
+        // body: JSON.stringify({
+        //   name: details.name,
+        //   email: details.email,
+        //   password: details.password,
+        //   college_id: details.college_id,
+        // }),
+      //   headers: { "Content-Type": "application/json" },
+      // });
+      const data = await userRequest.post("signup",{
+        name: details.name,
+        email: details.email,
+        password: details.password,
+        college_id: details.college_id,},{withCredentials:true}
+      ).then(res=>res.data)
 
       if (data.errors) {
         setErrors({

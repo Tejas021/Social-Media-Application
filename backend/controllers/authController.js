@@ -101,7 +101,7 @@ catch(err){
               
                 if (token) {
                 
-                    jwt.verify(token, 'somekey', async (err, decodedToken) => {
+                    jwt.verify(token, process.env.SECRET_KEY, async (err, decodedToken) => {
                      
                         if (err) {
                             console.log(err.message)

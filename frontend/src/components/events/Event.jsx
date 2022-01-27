@@ -2,11 +2,12 @@ import React from 'react'
 import SingleEvent from './SingleEvent'
 import {useEffect,useState} from "react"
 import "./Event.css"
+import { userRequest } from '../../axios'
 
 const Event = () => {
     const [events,setEvents]=useState([])
 useEffect(()=>{
-    fetch("http://localhost:5000/get-events").then(res=>res.json()).then(res=>setEvents(res))
+    userRequest.get("get-events").then(res=>res.data).then(res=>setEvents(res))
 })
     return (
         <div>

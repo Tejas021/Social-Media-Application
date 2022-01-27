@@ -7,6 +7,7 @@ import {useEffect,useState,useContext} from "react"
 import AddPost from './AddPost'
 
 import {UserContext} from "../../UserContext"
+import { userRequest } from '../../axios'
 // import ProfilePic from '../Profile/ProfilePic'
 // import SearchModal from './search/SearchModal'
 
@@ -22,11 +23,13 @@ const [dis,setDis]=useState(false)
     
     useEffect(() => {
        const fetcher=async()=>{
-     await fetch("http://localhost:5000/get-post",{
-            method:"POST",
-            body:JSON.stringify({following:user.following,userId:user._id}),
-            headers:{"Content-type":"application/json"},
-        }).then(res=>res.json()).then(res=>setPosts(res)).catch(error=>console.log(error))
+    //  await fetch("http://localhost:5000/get-post",{
+    //         method:"POST",
+    //         body:JSON.stringify({following:user.following,userId:user._id}),
+    //         headers:{"Content-type":"application/json"},
+    //     })
+
+            userRequest.post("get-post",{following:user.following,userId:user._id}).then(res=>res.data).then(res=>setPosts(res)).catch(error=>console.log(error))
      
     }
     fetcher()},
