@@ -2,19 +2,21 @@ import React from 'react'
 import UserCard from './UserCard'
 import { useState } from 'react'
 import "./Search.css"
+import { userRequest } from '../../../axios'
 const SearchModal = () => {
     const [query, setQuery] = useState("")
-    const [searchResult, setSearchResult] = useState([])
+    const [searchResult, setSearchResult] = useState(["",''])
 
     const searchUser=(e)=>{
         e.preventDefault()
         setQuery(e.target.value)
 
-        fetch("http://localhost:5000/search-users",{
-            method:"POST",
-            headers:{"Content-type":"application/json"},
-            body:JSON.stringify({query})
-        }).then(res=>res.json()).then(res=>setSearchResult(res))
+        // fetch("http://localhost:5000/search-users",{
+        //     method:"POST",
+        //     headers:{"Content-type":"application/json"},
+        //     body:JSON.stringify({query})
+        // })
+        userRequest.post("search-users",{query}).then(res=>setSearchResult(res.data)).catch(err=>console.log(err))
 
     }
 

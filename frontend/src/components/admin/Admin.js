@@ -1,16 +1,21 @@
 import React from 'react'
 import { useState } from 'react'
+
+import { userRequest } from '../../axios'
 const Admin = () => {
     const [event, setevent] = useState({name:"",description:"",link:""})
 
-    const addEvent=(e)=>{
+    const addEvent=async (e)=>{
         e.preventDefault()
 
-        fetch("http://localhost:5000/post-events",{
-           method:"POST",
-           headers:{"Content-Type":"application/json"},
-           body:JSON.stringify(event)
-        }).then(res=>res.json()).then(res=>console.log(res)).then(setevent({name:"",description:"",link:""}))
+        // fetch("http://localhost:5000/post-events",{
+        //    method:"POST",
+        //    headers:{"Content-Type":"application/json"},
+        //    body:JSON.stringify(event)
+        // }).then(res=>res.json()).then(res=>console.log(res)).then(setevent({name:"",description:"",link:""}))
+
+         await userRequest.post("post-events",event).then(res=>res.data)
+   
     }
     return (
         <div className='container p-5'>

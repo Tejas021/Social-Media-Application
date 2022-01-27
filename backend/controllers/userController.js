@@ -47,7 +47,7 @@ module.exports.handleUnFollow = async(req,res)=>{
 }
 
 module.exports.searchUsers=async(req,res)=>{
-
+   
     User.find({ name: { $regex: req.body.query, $options: "i" } }, function(err, docs) {
      
         res.status(200).send(docs)

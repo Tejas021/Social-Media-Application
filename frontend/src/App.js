@@ -16,6 +16,7 @@ import CommentBox from './components/home/comments/CommentBox';
 import Navbar from './components/utilities/Navbar';
 import Event from './components/events/Event';
 import Admin from './components/admin/Admin';
+import { userRequest } from './axios';
 function App() {
 
   const [user, setUser] = useState(null)
@@ -27,13 +28,14 @@ function App() {
     const verifyUser = async () => {
       try {
         
-        const res = await fetch('http://localhost:5000/verifyuser', {
-        method:"GET",  
-        credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
-          // body:JSON.stringify({cookie})
-        });
-        const data = await res.json();
+        // const res = awa
+        //  await fetch('http://localhost:5000/verifyuser', {
+        // method:"GET",  
+        // credentials: 'include',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   // body:JSON.stringify({cookie})
+        // });
+        const data = await userRequest.get("verifyuser",{withCredentials:true}).then(res=>res.data)
         setUser(data);
       } catch (error) {
         console.log(error)

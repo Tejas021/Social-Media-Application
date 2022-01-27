@@ -3,6 +3,7 @@ import "./Home.css"
 import {Link} from "react-router-dom"
 import {useState} from "react"
 import { format } from "timeago.js"
+import { userRequest } from '../../axios'
 
 
 const Post = ({Name,Caption,likes,img,post_id,user_id,friend_id,likedPeople,created_At}) => {
@@ -33,12 +34,13 @@ const Post = ({Name,Caption,likes,img,post_id,user_id,friend_id,likedPeople,crea
             
         }
         let data={post_id,liked,friend_id}
-        fetch("http://localhost:5000/like",{
-            method:"POST",
-            headers:{"Content-type":"application/json"},
-            body:JSON.stringify(data)
-        }).then(res=>res.json()).then(r=>{
-            console.log(r)
+        // fetch("http://localhost:5000/like",{
+        //     method:"POST",
+        //     headers:{"Content-type":"application/json"},
+        //     body:JSON.stringify(data)
+        // })
+        userRequest.post("like",data).then(res=>res.data).then(r=>{
+          
             setLikeCount(r.like)
         })
         .catch(err=>console.log(err))

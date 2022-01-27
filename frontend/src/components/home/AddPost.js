@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState} from "react"
+import { userRequest } from '../../axios'
 const AddPost = ({posts,setPosts,user}) => {
     
 const [image, setimage] = useState("")
@@ -38,12 +39,13 @@ const imageUpload=(e)=>{
 const submitFunction=(e)=>{
     e.preventDefault()
    
-    console.log(newpost.imgUrl)
-    fetch("http://localhost:5000/add-post",{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify(newpost)
-}).then(res=>res.json()).then(res=>setPosts([...posts,res]))
+    // console.log(newpost.imgUrl)
+    // fetch("http://localhost:5000/add-post",{
+    // method:"POST",
+    // headers:{"Content-Type":"application/json"},
+    // body:JSON.stringify(newpost)
+// })
+userRequest.post("add-post",newpost).then(res=>res.data).then(res=>setPosts([...posts,res]))
 }
 
 

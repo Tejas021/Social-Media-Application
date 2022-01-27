@@ -46,8 +46,8 @@
  
  i:hover{
    transition: ease-in-out;
-   transition-delay: 0.1s;
-   transform: scale(1.7);
+   transition-delay: 0.01s;
+   transform: scale(1.3);
  }
 
 @media  (max-width:420px) {

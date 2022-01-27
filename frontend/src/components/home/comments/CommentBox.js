@@ -3,6 +3,7 @@ import Comments from './Comments'
 import { useContext,useState,useEffect } from 'react'
 import {useParams} from 'react-router-dom'
 import {UserContext} from "../../../UserContext"
+import { userRequest } from '../../../axios'
 import "./Commet.css"
 
 const CommentBox = () => {
@@ -15,10 +16,13 @@ const CommentBox = () => {
     
     useEffect(()=>{
         const fetchComments=async()=>{
-           const fetchcomments=await fetch(`http://localhost:5000/comments/${params.id}`,{
-                method:"GET",
-                headers:{"Content-type":"application/json"},
-            }).then(res=>(res.json())).catch(error=>console.log(error))
+           const fetchcomments=await userRequest.get(`comments/${params.id}`).then(res=>res.data).catch(error=>console.log(error))
+            // fetch(`http://localhost:5000/comments/${params.id}`,{
+            //     method:"GET",
+            //     headers:{"Content-type":"application/json"},
+            // }).then(res=>(res.json())).catch(error=>console.log(error))
+
+
             const final=await fetchcomments
             setComments(final)
         }
@@ -33,13 +37,14 @@ const CommentBox = () => {
             text:newComment
         }
         try{
-            fetch("http://localhost:5000/comments", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-            "Content-type": "application/json; charset=UTF-8"
-                }
-            }).then(response => response.json()).then(json => setComments([...comments,json]))
+            // fetch("http://localhost:5000/comments", {
+            // method: "POST",
+            // body: JSON.stringify(data),
+            // headers: {
+            // "Content-type": "application/json; charset=UTF-8"
+            //     }
+            // })
+            userRequest.post("comments",data).then(response => response.data).then(json => setComments([...comments,json]))
             setNewComment('')
         } catch(err){
             console.log(err)
