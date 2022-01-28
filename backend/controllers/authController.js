@@ -72,13 +72,14 @@ module.exports.signup=async (req,res)=>{
 
 try{
     const {name,password,email,college_id,isAdmin }=req.body;
-    console.log(req.body)
+    // console.log(req.body)
+const newUser = new User({name:req.body.name,password:req.body.password,email:req.body.email,college_id:req.body.college_id,isAdmin:req.body.isAdmin})
+const savedUser= await newUser.save()
 
-const newUser= await User.save({name,password,email,college_id,isAdmin})
-console.log(newUser)
 const token = createJWT(newUser._id,newUser.isAdmin)
 // res.cookie("jwt",token,{maxAge:maxAge*1000,httpOnly: true,})
-const data = {...newUser,token}
+const { ...info } = savedUser._doc
+const data = {...info,token}
 console.log(data);
 res.status(201).send({user:data})
 }
