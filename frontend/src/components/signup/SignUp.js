@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import { UserContext } from "../../UserContext";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
-import { userRequest,publicRequest } from "../../axios";
+import { userRequest } from "../../axios";
 
 const SignUp = () => {
   const { user, setUser } = useContext(UserContext);
@@ -39,8 +39,8 @@ const SignUp = () => {
         // }),
       //   headers: { "Content-Type": "application/json" },
       // });
-      console.log(details);
-      const data = await publicRequest.post("signup",{
+     // console.log(details);
+      const data = await userRequest.post("signup",{
         name: details.name,
         email: details.email,
         password: details.password,
@@ -48,11 +48,9 @@ const SignUp = () => {
       ).then(res=>res.data)
 
       if (data.errors) {
-        setErrors({
-          emailError: data.errors.email,
+        setErrors({emailError: data.errors.email,
           usernameError: data.errors.name,
-          passwordError: data.errors.password,
-        });
+          passwordError: data.errors.password,});
       }
       if (data.user) {
         setUser(data.user);

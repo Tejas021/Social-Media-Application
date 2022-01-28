@@ -25,7 +25,7 @@ const Login = () => {
 
     try {
       
-      const data = await userRequest.post("signin",{email:details.email,password:details.password},{withCredentials:true}).then(res=>res.data)
+      const data = await userRequest.post("signin",{email:details.email,password:details.password},{withCredentials:true}).then(res=>res.data).then(data1=>setUser(data1._doc))
       // await fetch("http://localhost:5000/signin", {
       //   method: "POST",
       //   credentials: "include",
@@ -48,6 +48,7 @@ const Login = () => {
       }
       if (data.user) {
         setUser(data.user);
+
       }
     } catch (error) {
       console.log(error);
@@ -110,9 +111,11 @@ const Login = () => {
                     >
                       Login
                     </button>
+                    
                     {/* <div className="or col-lg-2 my-3">
               <h3>or</h3>
-            </div> */}
+            </div>  */}
+           
                     <div
                       className="btn btn-dark btn-login fw-bold my-3"
                       

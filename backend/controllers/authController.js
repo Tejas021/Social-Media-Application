@@ -44,7 +44,7 @@ console.log(password,email)
 
   try{
       const user=await User.login(email,password);
-
+console.log(user)
   const token=createJWT(user._id,user.isAdmin)
 
 //   res.cookie("jwt",token,{maxAge:maxAge*1000,httpOnly:true})
