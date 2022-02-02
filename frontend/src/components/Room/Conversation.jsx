@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
+import { userRequest } from '../../axios'
 
 const Conversation = ({conversation,currentUser}) => {
 
@@ -10,8 +11,9 @@ const Conversation = ({conversation,currentUser}) => {
         const friendId = conversation.members.find(m => m !== currentUser._id )
         const getUser =  async ()=>{
            
-         await fetch("http://localhost:5000/user?userId=" + friendId)
-         .then(res=>res.json())
+        //  await fetch("http://localhost:5000/user?userId=" + friendId)
+        //  .then(res=>res.json())
+        await userRequest.get("user?userId=" + friendId).then(res=>res.data)
          .then(res=>setUser(res))
          .catch(error=>console.log(error))
                     

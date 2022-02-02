@@ -46,15 +46,14 @@ const SignUp = () => {
         password: details.password,
         college_id: details.college_id,},{withCredentials:true}
       ).then(res=>res.data)
-        console.log(data.user)
+        
       if (data.errors) {
         setErrors({emailError: data.errors.email,
           usernameError: data.errors.name,
           passwordError: data.errors.password,});
       }
-      if (data.user) {
-        setUser(data.user);
-        console.log(user)
+      if (data) {
+        setUser(data);
         const token = user.token
         localStorage.setItem('token',token)
       }

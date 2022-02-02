@@ -25,7 +25,7 @@ const Login = () => {
 
     try {
       
-      const data = await userRequest.post("signin",{email:details.email,password:details.password},{withCredentials:true}).then(res=>res.data).then(data1=>setUser(data1._doc))
+      const data = await userRequest.post("signin",{email:details.email,password:details.password},{withCredentials:true}).then(res=>res.data).then(data1=>data1)
       // await fetch("http://localhost:5000/signin", {
       //   method: "POST",
       //   credentials: "include",
@@ -39,6 +39,7 @@ const Login = () => {
       // const data = await res.json();
       // console.log(details.email);
 
+
       if (data.errors) {
         console.log(data.errors);
         setErrors({
@@ -46,9 +47,10 @@ const Login = () => {
           passwordError: data.errors.password,
         });
       }
-      if (data.user) {
-        setUser(data.user);
-
+      if (data.accessToken) {
+        setUser(data)
+        localStorage.setItem("token",data.accessToken)
+     
       }
     } catch (error) {
       console.log(error);

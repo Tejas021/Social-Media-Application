@@ -7,6 +7,7 @@ import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../UserContext";
 import Conversation from "./Conversation";
 import Follower from './Follower'
+import { userRequest } from "../../axios";
 
 
 const Room = () => {
@@ -30,8 +31,9 @@ const Room = () => {
   // console.log(user);
   useEffect(() => {
     const getConversation = async () => {
-       await fetch("http://localhost:5000/conversation/" + user._id)
-        .then((res) => res.json())
+      //  await fetch("http://localhost:5000/conversation/" + user._id)
+        // .then((res) => res.json())
+      await userRequest.get("conversation/"+ user._id).then(res=>res.data)
         .then((res) => setConversations(res))
         .catch((error) => console.log(error));
     };
@@ -45,13 +47,13 @@ const postConversation=async(e,userId)=>{
   e.preventDefault()
   console.log("click")
   // console.log(userId,userId)
-  await  fetch("http://localhost:5000/conversation",{
-    method:"POST",
-    headers:{"Content-type":"application/json"},
-    body:JSON.stringify({senderId:user._id,receiverId:userId})
-  }).then(res=>res.json()).then(r=>setConversations([...conversations,r]))
+  // await  fetch("http://localhost:5000/conversation",{
+  //   method:"POST",
+  //   headers:{"Content-type":"application/json"},
+  //   body:JSON.stringify({senderId:user._id,receiverId:userId})
+  // }).then(res=>res.json())
+await userRequest.post("conversation",{senderId:user._id,receiverId:userId}).then(res=>res.data).then(r=>setConversations([...conversations,r]))
 }
-
 
 
   return (

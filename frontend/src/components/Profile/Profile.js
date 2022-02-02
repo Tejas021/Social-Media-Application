@@ -7,6 +7,7 @@ import {UserContext} from "../../UserContext"
 import UpdateProfile from "./UpdateProfile"
 import "./Profile.css"
 import ProfilePic from './ProfilePic'
+import { userRequest } from '../../axios'
 
 const Profile = () => {
     const [display, setdisplay] = useState(false)
@@ -16,12 +17,13 @@ const Profile = () => {
     useEffect(()=>{
 
         const fetchPosts=async()=>{
-           const fetchposts=await fetch(`http://localhost:5000/getposts/${user._id}`,{
-                method:"GET",
-                headers:{"Content-type":"application/json"},
-            }).then(res=>(res.json())).catch(error=>console.log(error))
+           const fetchposts= await userRequest(`getposts/${user._id}`)
+        //    await fetch(`http://localhost:5000/getposts/${user._id}`,{
+        //         method:"GET",
+        //         headers:{"Content-type":"application/json"},
+        //     }).then(res=>(res.json())).catch(error=>console.log(error))
         
-            const final=await fetchposts
+            const final=await fetchposts.data
        
             setPosts(final)
             
@@ -32,8 +34,9 @@ const Profile = () => {
     },[user._id])
 
     const logout=()=>{
-        fetch("http://localhost:5000/logout",{method:"GET",credentials:"include"});
-        setUser(null)}
+        // fetch("http://localhost:5000/logout",{method:"GET",credentials:"include"});
+        setUser(null)
+    localStorage.setItem("token","")}
     return (
         <div>
 

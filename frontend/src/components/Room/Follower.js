@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
+import { userRequest } from '../../axios'
 
 const Follower = ({userId}) => {
 
@@ -10,8 +11,9 @@ const Follower = ({userId}) => {
 
         const getUser =  async ()=>{
            
-         await fetch("http://localhost:5000/user?userId=" + userId)
-         .then(res=>res.json() )
+        //  await fetch("http://localhost:5000/user?userId=" + userId)
+        //  .then(res=>res.json() )
+        await userRequest.get("user?userId=" + userId).then(res=>res.data)
          .then(res=>setFollower(res))
          .catch(error=>console.log(error))
                     

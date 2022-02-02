@@ -8,6 +8,7 @@ import {UserContext} from "../../UserContext"
 
 import "../Profile/Profile.css"
 import ProfilePic from '../Profile/ProfilePic'
+import { userRequest } from '../../axios'
 const Profile1 = () => {
     const {user}=useContext(UserContext)
     const params = useParams();
@@ -19,10 +20,11 @@ const Profile1 = () => {
     console.log(params.id)
     useEffect(()=>{
         const fetchPosts=async()=>{
-           const fetchposts=await fetch(`http://localhost:5000/getposts/${params.id}`,{
-                method:"GET",
-                headers:{"Content-type":"application/json"},
-            }).then(res=>(res.json())).catch(error=>console.log(error))
+        //    const fetchposts=await fetch(`http://localhost:5000/getposts/${params.id}`,{
+        //         method:"GET",
+        //         headers:{"Content-type":"application/json"},
+        //     }).then(res=>(res.json())).catch(error=>console.log(error))
+        const fetchposts= await userRequest.get(`getposts/${params.id}`).then(res=>res.data)
             const final=await fetchposts
             setPosts(final)
         }
@@ -32,11 +34,15 @@ const Profile1 = () => {
 
     useEffect(() => {
         const getUser=async()=>{
-            fetch(`http://localhost:5000/user?userId=${params.id}`).then(res=>res.json()).then(res=>setcurrentUser(res))
+           // fetch(`http://localhost:5000/user?userId=${params.id}`).then(res=>res.json())
+            await userRequest.get(`user?userId=${params.id}`).then(res=>setcurrentUser(res.data))
         }
         getUser()
+
         
     }, [params.id,follow])
+
+    
 
     useEffect(()=>{
         if(user.following.includes(params.id)){
@@ -48,24 +54,28 @@ const Profile1 = () => {
         }
     },[user.following,params.id])
 
-    const handleFollow=(e)=>{
+    const handleFollow=async(e)=>{
         e.preventDefault()
-        fetch(`http://localhost:5000/follow/${currentuser._id}`,{
-            method:"post",
-            headers:{"Content-type":"application/json"},
-            body:JSON.stringify({userId:user._id})
-        }).then(res=>res.json()).then(res=>console.log(res))
+        // fetch(`http://localhost:5000/follow/${currentuser._id}`,{
+        //     method:"post",
+        //     headers:{"Content-type":"application/json"},
+        //     body:JSON.stringify({userId:user._id})
+        // }).then(res=>res.json()).then(res=>console.log(res))
+
+
+        await userRequest.post(`follow/${currentuser._id}`,{userId:user._id}).then(res=>console.log(res.data))
         setFollow(true)
         // setUser({...user)
     }
 
-    const handleUnfollow=(e)=>{
+    const handleUnfollow=async(e)=>{
         e.preventDefault()
-        fetch(`http://localhost:5000/unfollow/${currentuser._id}`,{
-            method:"post",
-            headers:{"Content-type":"application/json"},
-            body:JSON.stringify({userId:user._id})
-        }).then(res=>res.json()).then(res=>console.log(res))
+        // fetch(`http://localhost:5000/unfollow/${currentuser._id}`,{
+        //     method:"post",
+        //     headers:{"Content-type":"application/json"},
+        //     body:JSON.stringify({userId:user._id})
+        // }).then(res=>res.json()).then(res=>console.log(res))
+        await userRequest.post(`unfollow/${currentuser._id}`,{userId:user._id}).then(res=>console.log(res.data))
         setFollow(false)
     }
     console.log(currentuser)
@@ -109,7 +119,7 @@ const Profile1 = () => {
         
         
         <h3 className="text-warning"> Posts:</h3>
-        {posts.map(post=><Post key={post._id} Name={post.user} Caption={post.caption} likes={post.like} img={post.imgUrl}/>)}
+        {posts.map(post=><Post key={post._id} user_id={user._id} created_At={post.createdAt} likedPeople={post.likedPeople} post_id={post._id} Name={post.user} Caption={post.caption} friend_id={post.userId} likes={post.like} img={post.imgUrl}/>)}
 
         </div>
       

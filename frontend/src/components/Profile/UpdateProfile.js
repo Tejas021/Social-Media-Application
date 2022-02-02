@@ -1,17 +1,18 @@
 import React from 'react'
 import {useState} from "react"
+import { userRequest } from '../../axios'
 const UpdateProfile = ({user_id,setUser}) => {
    
 const [changes,setChanges]=useState({name:"",bio:"",city:"",department:"",user_id:user_id})
 const makeChanges=(e)=>{
     e.preventDefault()
-    fetch("http://localhost:5000/updateuser",{
-        method:"PATCH",
-        body:JSON.stringify(changes),
-        headers:{"Content-Type":"application/json"},
-    }).then(res=>res.json()).then(res1=>setUser(res1))
+    // fetch("http://localhost:5000/updateuser",{
+    //     method:"PATCH",
+    //     body:JSON.stringify(changes),
+    //     headers:{"Content-Type":"application/json"},
+    // }).then(res=>res.json()).then(res1=>setUser(res1))
 
-    
+    userRequest.patch("updateuser",changes).then(res=>res.data).then(res=>setUser(res)).catch(err=>console.log(err))
 
 }
 

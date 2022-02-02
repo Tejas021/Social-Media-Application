@@ -15,7 +15,7 @@ const mongodb = "mongodb://admin:admin123@cluster0-shard-00-00.abkev.mongodb.net
 const app=express() //creating an express application
 
 // app.use(dotenv.config())
-let PORT =process.env.PORT||5000
+let PORT =process.env.PORT||8000
 
 // .then(()=>{app.listen(PORT,()=>{
 //     console.log(`Listening at ${PORT}`)

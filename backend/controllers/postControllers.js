@@ -68,14 +68,14 @@ module.exports.deletePost=()=>{
 
 module.exports.handleLike=async(req,res)=>{
   var friend = req.body.friend_id;
+  console.log(req.body)
   var post = await Post.findOne({_id:req.body.post_id})
   const liked_people=post.likedPeople;
   const disliked_people=post.dislikedPeople;
-  // console.log(liked_people)
-  // console.log(disliked_people)
+ 
   const verLikedUser = await liked_people.includes(friend)
   const verDislikedUser = await disliked_people.includes(friend)
-  // console.log(verLikedUser)
+  
   if(req.body.liked){
       if(!verLikedUser){
         // console.log("new like")
