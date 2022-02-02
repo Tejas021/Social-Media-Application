@@ -59,6 +59,7 @@ function App() {
 <Navbar/>
 
 <Switch>
+  {console.log(user)}
 
     <Route exact path="/" >{user?<Home/>:<Login/>}</Route>
     <Route path="/about" >{user?<About/>:<Login/>}</Route>

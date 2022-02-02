@@ -38,20 +38,24 @@ const alertError = (err) => {
 
 module.exports.signin=async (req,res)=>{
 
-const {password,email }=req.body;
+const {email }=req.body;
 
-console.log(password,email)
 
   try{
-      const user=await User.login(email,password);
+      const user=await User.login(email,req.body.password);
 
-  const token=createJWT(user._id,user.isAdmin)
+  const accessToken=createJWT(user._id,user.isAdmin)
 
-//   res.cookie("jwt",token,{maxAge:maxAge*1000,httpOnly:true})
-  res.status(201).send({...user,token})
+
+
+const {password,...others} = user._doc;
+
+      
+       res.status(200).send({...others,accessToken})
+
   }
   catch(err){
-    
+    console.log("hi")
    let errors=alertError(err)
    console.log(errors)
     res.status(400).send({errors})
@@ -60,33 +64,30 @@ console.log(password,email)
 
 }
 
-// module.exports.logout=async (req,res)=>{
-// // console.log("logout")
-//     res.cookie('jwt', "", { maxAge: 1 })
-//     res.status(200).json({ logout: true })
-    
-//     }
+
 
 module.exports.signup=async (req,res)=>{
 
 
 try{
-    const {name,password,email,college_id,isAdmin }=req.body;
-    // console.log(req.body)
-const newUser = new User({name:req.body.name,password:req.body.password,email:req.body.email,college_id:req.body.college_id,isAdmin:req.body.isAdmin})
-const savedUser= await newUser.save()
+    const {name,email,college_id,isAdmin }=req.body;
+    console.log(req.body)
 
-const token = createJWT(newUser._id,newUser.isAdmin)
-// res.cookie("jwt",token,{maxAge:maxAge*1000,httpOnly: true,})
-const { ...info } = savedUser._doc
-const data = {...info,token}
-console.log(data);
-res.status(201).send({user:data})
+const newUser= await User.create({name,password:req.body.password,email,college_id,Admin:isAdmin})
+
+const token = createJWT(newUser._id,newUser.Admin)
+
+// const data = {...newUser,token}
+
+const {password,...others} = newUser._doc;
+
+console.log({...others,token})
+res.status(201).send({...others,token})
 }
 catch(err){
    
     let errors=alertError(err)
-    
+    console.log(err)
     res.status(400).json({errors})
     }
 
@@ -94,8 +95,9 @@ catch(err){
 }
 
 module.exports.verifyUser =  async (req, res) => {
-    console.log("---auth---")
-    console.log(req.user)
+    // console.log("---auth---")
+    // console.log(req)
+    // console.log(req.user)
     if (req.user) {
         try {
             console.log(req.user)
@@ -107,12 +109,14 @@ module.exports.verifyUser =  async (req, res) => {
         }
 
     } else {
-        // res.status(404).send("no token")
+      
+
+
         console.log("no token")
     }
 }
 
-        module.exports.updateUser=async(req,res)=>{
+module.exports.updateUser=async(req,res)=>{
           
             const user1 =await User.findByIdAndUpdate(req.body.user_id,{
                 bio:req.body.bio,

@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken")
 
 const verifyToken=(req,res,next)=>{
-    const token = req.header("x-auth-token");
-    console.log(token)
+    const token = req.header("xAuthToken");
+  
     try{  if(token){
        
             jwt.verify(token.split(" ")[1],process.env.SECRET_KEY,(err,user)=>{
@@ -22,8 +22,7 @@ res.status(400).send("not authenticated")
 
 const verifyTokenAndAuthorization = (req,res,next)=>{
     verifyToken(req,res,()=>{
-       console.log(req.user.isAdmin)
-       console.log(req.params.id)
+  
         if(req.user.id===req.params.id||req.user.isAdmin===true){
           
             next()

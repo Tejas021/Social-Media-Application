@@ -3,6 +3,7 @@ import Message from './Message'
 import { useState, useEffect, useContext, useRef } from "react";
 import { UserContext } from "../../UserContext";
 import {io} from 'socket.io-client'
+import { userRequest } from '../../axios';
 
 
 
@@ -19,7 +20,7 @@ const ChatBox = ({currentChat}) => {
   // console.log(currentChat)
 
   useEffect(()=>{
-    socket.current=io('ws://localhost:5000')
+    socket.current=io('ws://localhost:8000')
     socket.current.on("getMessage",data=>{
       setArrivalMessage({
         sender: data.senderId,
@@ -33,8 +34,9 @@ const ChatBox = ({currentChat}) => {
 
    useEffect(()=>{
     const getMessasges = async ()=>{
-      await fetch("http://localhost:5000/message/" + currentChat?._id)
-      .then(res=>res.json())
+      // await fetch("http://localhost:5000/message/" + currentChat?._id)
+      // .then(res=>res.json())
+      await userRequest.get("message/" + currentChat?._id).then(res=>res.data)
       .then(res=>setMessages(res))
       .catch((error)=>console.log(error))
     }
@@ -71,15 +73,15 @@ const ChatBox = ({currentChat}) => {
     })
 
     try{
-    fetch("http://localhost:5000/message", {
-    method: "POST",
-    body: JSON.stringify(msg),
-    headers: {
-        "Content-type": "application/json; charset=UTF-8"
-    }
-})
-.then(response => response.json())
-.then(json => setMessages([...messages,json]));
+//     fetch("http://localhost:5000/message", {
+//     method: "POST",
+//     body: JSON.stringify(msg),
+//     headers: {
+//         "Content-type": "application/json; charset=UTF-8"
+//     }
+// })
+// .then(response => response.json())
+userRequest.post("message",msg).then(req=>req.data).then(json => setMessages([...messages,json]));
 setNewMessage('')
     } catch(err){
       console.log(err)

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { userRequest } from '../../axios'
 // import {Link} from "react-router-dom"
 // import { UserContext } from '../../UserContext'
 // import {io} from 'socket.io-client'
@@ -18,12 +19,13 @@ const Chat = () => {
     const onSubmitHandler= async (e)=>{
         e.preventDefault();
         try{
-          await fetch('http://localhost:5000/create-room',{
-            method: 'POST',
-            credentials: 'include',
-            body: JSON.stringify({name:room,password:roompass,}),
-            headers: { "Content-type": "application/json; charset=UTF-8" }
-        }).then(res=>res.json()).then(r=>console.log(r))
+        //   await fetch('http://localhost:5000/create-room',{
+        //     method: 'POST',
+        //     credentials: 'include',
+        //     body: JSON.stringify({name:room,password:roompass,}),
+        //     headers: { "Content-type": "application/json; charset=UTF-8" }
+        // }).then(res=>res.json()).
+        await userRequest.post("create-room",{name:room,password:roompass}).then(res=>res.data).then(r=>console.log(r))
            } catch(error){
             console.log(error)
            }

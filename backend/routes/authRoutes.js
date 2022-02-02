@@ -13,3 +13,36 @@ router.patch("/updateuser",authController.updateUser)
 // router.post('/verifyuser',authController.verifyUser)
 
 module.exports=router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
